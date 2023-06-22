@@ -136,7 +136,7 @@ LineRenderer:
     shadowBias: 0.5
     generateLightingData: 0
   m_MaskInteraction: 0
-  m_UseWorldSpace: 1
+  m_UseWorldSpace: 0
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
 --- !u!68 &3715996953616667024
@@ -192,8 +192,8 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 5
-  m_LinearDrag: 0
+  m_Mass: 10
+  m_LinearDrag: 3
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
@@ -219,5 +219,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc7ba6e98d578c5448502683f1f39b6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lineRenderer: {fileID: 1646738877516532853}
+  edgeCollider2D: {fileID: 3715996953616667024}
   rigid: {fileID: 495241027552985911}
   edgeCollider2D: {fileID: 3715996953616667024}
+  polygonCollider2D: {fileID: 0}

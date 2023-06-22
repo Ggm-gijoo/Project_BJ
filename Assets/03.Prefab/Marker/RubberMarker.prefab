@@ -136,7 +136,7 @@ LineRenderer:
     shadowBias: 0.5
     generateLightingData: 0
   m_MaskInteraction: 0
-  m_UseWorldSpace: 1
+  m_UseWorldSpace: 0
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
 --- !u!68 &3715996953616667024
@@ -219,3 +219,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e120e61c8c9b6a4f8bb8a67c080ba9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lineRenderer: {fileID: 1646738877516532853}
+  edgeCollider2D: {fileID: 3715996953616667024}
