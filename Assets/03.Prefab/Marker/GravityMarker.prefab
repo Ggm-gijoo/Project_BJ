@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 8708780025078928261}
   - component: {fileID: 1646738877516532853}
   - component: {fileID: 3715996953616667024}
-  - component: {fileID: 2301779723231171345}
+  - component: {fileID: 495241027552985911}
+  - component: {fileID: 942796093488727024}
   m_Layer: 0
-  m_Name: BlackMarker
+  m_Name: GravityMarker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55,7 +56,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f62e2303496b73e4d91bfa5d8dc480cb, type: 2}
+  - {fileID: 2100000, guid: 847b3cb344f322c4682acd3bad7653e7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -179,7 +180,34 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
---- !u!114 &2301779723231171345
+--- !u!50 &495241027552985911
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3599200129532963701}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 5
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &942796093488727024
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -188,6 +216,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 3599200129532963701}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e120e61c8c9b6a4f8bb8a67c080ba9c, type: 3}
+  m_Script: {fileID: 11500000, guid: cc7ba6e98d578c5448502683f1f39b6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rigid: {fileID: 495241027552985911}
+  edgeCollider2D: {fileID: 3715996953616667024}
