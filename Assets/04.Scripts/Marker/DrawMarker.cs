@@ -23,7 +23,6 @@ namespace Marker
         public GameObject currentLine;
 
         private LineRenderer lineRenderer;
-        private EdgeCollider2D edgeCollider2D;
         private List<Vector2> fingerPositions = new List<Vector2>();
         private Vector3 mousePos;
         private BaseMarker currentMarker;
@@ -61,13 +60,11 @@ namespace Marker
             currentLine = Instantiate(linePrefab, Vector3.zero, Quaternion.identity);
             currentMarker = currentLine.GetComponent<BaseMarker>();
             lineRenderer = currentLine.GetComponent<LineRenderer>();
-            edgeCollider2D = currentLine.GetComponent<EdgeCollider2D>();
             fingerPositions.Clear();
             fingerPositions.Add(Camera.main.ScreenToWorldPoint(mousePos));
             fingerPositions.Add(Camera.main.ScreenToWorldPoint(mousePos));
             lineRenderer.SetPosition(0, fingerPositions[0]);
             lineRenderer.SetPosition(1, fingerPositions[1]);
-            edgeCollider2D.points = fingerPositions.ToArray();
         }
 
         private void UpdateLine(Vector2 newFingerPos)
@@ -75,7 +72,6 @@ namespace Marker
             fingerPositions.Add(newFingerPos);
             lineRenderer.positionCount  = fingerPositions.Count;
             lineRenderer.SetPosition(lineRenderer.positionCount - 1, newFingerPos);
-            edgeCollider2D.points = fingerPositions.ToArray();
         }
         
     }
