@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3051675291221478575}
   - component: {fileID: 3205252317582722349}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,7 +150,7 @@ GameObject:
   - component: {fileID: 942796093488727024}
   - component: {fileID: 5520612540761525670}
   - component: {fileID: 3774473695471371853}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GravityMarker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
