@@ -12,6 +12,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float jumpPower;
     [SerializeField] private float fallMultiplier;
+    private Vector2 moveVelocity;
+    private float maxMoveVelocity;
+
 
     private bool isCanJump = true;
 
@@ -34,7 +37,11 @@ public class PlayerController : MonoBehaviour
         if (rigid == null) return;
 
         float dirH = Input.GetAxisRaw("Horizontal");
-        rigid.velocity = Vector2.right * dirH * speed + Vector2.up * rigid.velocity.y;
+        moveVelocity = Vector2.right * dirH * speed;
+
+        //rigid.velocity = moveVelocity + Vector2.right * rigid.velocity.x + Vector2.up * rigid.velocity.y;
+
+        rigid.velocity = Vector2.right * Mathf.Lerp(rigid.velocity.x, moveVelocity.x, Time.deltaTime * 3) + Vector2.up * rigid.velocity.y;
 
         if (rigid.velocity.y < 0)
             rigid.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1f) * Time.deltaTime;

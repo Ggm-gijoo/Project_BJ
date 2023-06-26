@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -6240497109152814805}
   - component: {fileID: 3499725049871297019}
   - component: {fileID: 2320243839710450625}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RubberMarker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
