@@ -39,8 +39,6 @@ namespace Marker
             if(Input.GetMouseButton(0))
             {
                 Vector2 tempFingerPos = Camera.main.ScreenToWorldPoint(mousePos);
-                Debug.Log(tempFingerPos);
-                //UpdateLine(tempFingerPos);
                 if (Vector2.Distance(tempFingerPos, fingerPositions[fingerPositions.Count - 1]) > 0.1f)
                 {
                     UpdateLine(tempFingerPos);

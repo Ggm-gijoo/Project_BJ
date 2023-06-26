@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 8708780025078928261}
   - component: {fileID: 1646738877516532853}
   - component: {fileID: 495241027552985911}
-  - component: {fileID: 2395267636834337918}
   - component: {fileID: -6240497109152814805}
   - component: {fileID: 3499725049871297019}
+  - component: {fileID: 2320243839710450625}
   m_Layer: 0
   m_Name: RubberMarker
   m_TagString: Untagged
@@ -167,21 +167,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &2395267636834337918
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3599200129532963701}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e120e61c8c9b6a4f8bb8a67c080ba9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lineRenderer: {fileID: 1646738877516532853}
-  polygonCollider2D: {fileID: -6240497109152814805}
-  markerPolyCollider: {fileID: 3499725049871297019}
 --- !u!60 &-6240497109152814805
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -246,3 +231,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lineRenderer: {fileID: 1646738877516532853}
   polygonCollider: {fileID: -6240497109152814805}
+--- !u!114 &2320243839710450625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3599200129532963701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce1a5aaf120db3c47a16698d6f0c56ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lineRenderer: {fileID: 1646738877516532853}
+  polygonCollider2D: {fileID: -6240497109152814805}
+  markerPolyCollider: {fileID: 3499725049871297019}
+  multiply: 1.07
