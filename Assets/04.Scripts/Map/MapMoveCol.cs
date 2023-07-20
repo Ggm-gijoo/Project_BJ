@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MapMoveCol : MonoBehaviour
+namespace Map
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	public class MapMoveCol : MonoBehaviour
+	{
+		[SerializeField]
+		private MapMoveManager.MoveType moveType;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+		public void OnTriggerEnter(Collider other)
+		{
+			MapMoveManager.Instance.MoveScene(moveType);
+		}
+	}
 }

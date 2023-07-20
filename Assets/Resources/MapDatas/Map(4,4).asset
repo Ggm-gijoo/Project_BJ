@@ -9,11 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55d47f9809ff4284cb97820de606ed54, type: 3}
-  m_Name: AllMapDataSO
+  m_Script: {fileID: 11500000, guid: fc16346ff339f21429080ddd2e7382fd, type: 3}
+  m_Name: Map(4,4)
   m_EditorClassIdentifier: 
-  gridSize: {x: 11, y: 11}
-  mapDataDic:
-    _serializedList: []
-  editorAddMapDataSO: {x: 0, y: 0}
-  editorMapDataSO: {fileID: 11400000, guid: 983acf213e5fa93448f4a1966d5c0a3f, type: 2}
+  iconType: 1
+  pos: {x: 4, y: 4}
+  sceneName: Map(4,4)
