@@ -4,6 +4,10 @@ using UnityEngine;
 using UnityEditor;
 using UnityEditor.PackageManager.UI;
 using UnityEngine.Rendering;
+using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
+using UnityEditor.UI;
+using UnityEditor.Compilation;
 
 namespace Map
 {
@@ -118,6 +122,49 @@ namespace Map
 					int gridY = Mathf.RoundToInt((mousePosition.y - startY) / cellSize);
 
 					Debug.Log("Clicked Grid Cell: (" + gridX + ", " + gridY + ")");
+
+					if (gridX == (allMapDataSO.gridSize.x / 2) || gridX == -(allMapDataSO.gridSize.x / 2))
+					{
+						allMapDataSO.gridSize.x += 2;
+					}
+
+					if (gridY == (allMapDataSO.gridSize.y / 2) || gridY == -(allMapDataSO.gridSize.y / 2))
+					{
+						allMapDataSO.gridSize.y += 2;
+					}
+
+					Vector2 pos = new Vector2(gridX, gridY);
+
+					if (allMapDataSO.mapDataDic.ContainsKey(pos))
+					{
+						//인스펙터에 SO 정보 표시
+						var so = allMapDataSO.mapDataDic[pos];
+						//var scene = EditorSceneManager.GetSceneByName(so.sceneName);
+						//EditorSceneManager.SetActiveScene(scene);
+						string[] guids = AssetDatabase.FindAssets("t:Scene " + so.sceneName);
+						Selection.activeObject = so;
+
+						if (guids.Length > 0)
+						{
+							string scenePath = AssetDatabase.GUIDToAssetPath(guids[0]);
+
+							// Open the scene in the Unity Editor
+							EditorSceneManager.OpenScene(scenePath);
+						}
+						else
+						{
+							Debug.LogWarning("Scene not found: " + so.sceneName);
+						}
+					}
+					else
+					{
+						//SO 생성 및 SO 정보 표시
+						var so = MapDataSO.CreateAsset(pos);
+						allMapDataSO.AddMapDataSO(pos, so);
+						AssetDatabase.SaveAssets();
+						Selection.activeObject = so;
+						AssetDatabase.Refresh();
+					}
 
 				}
 			}
