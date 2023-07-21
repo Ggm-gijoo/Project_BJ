@@ -19,10 +19,16 @@ namespace Map
 			Down,
 		}
 
+		public MoveType CurrentMoveType => currentMoveType;
+
 		private Vector2 praviousePos;
 		private Vector2 currentPos;
+		private MoveType currentMoveType;
 		private static AllMapDataSO allMapDataSO;
 		private bool isInit;
+
+		[SerializeField]
+		private Vector2 editorLoadMapFirst;
 
 		void Awake()
 		{
@@ -30,6 +36,11 @@ namespace Map
 			{
 				Init();
 			}
+		}
+		private void Start()
+		{
+			SceneManager.LoadScene(allMapDataSO.mapDataDic[currentPos].sceneName, LoadSceneMode.Additive);
+			currentPos = editorLoadMapFirst;
 		}
 
 		private void Init()
@@ -40,6 +51,7 @@ namespace Map
 
 		public void MoveScene(MoveType moveType)
 		{
+			currentMoveType = moveType;
 			praviousePos = currentPos;
 
 			//이동할 씬 설정
@@ -76,29 +88,6 @@ namespace Map
 				}
 			}
 			SceneManager.LoadScene(allMapDataSO.mapDataDic[currentPos].sceneName, LoadSceneMode.Additive);
-
-
-
-			//플레이어 위치 변경
-
-			Vector2 movePoint = Vector2.zero;
-			MovePositionHaver movePositionHaver = GameObject.FindObjectOfType<MovePositionHaver>();
-			switch (moveType)
-			{
-				case MoveType.Left:
-					movePoint = movePositionHaver.movePoint[MoveType.Right].position;
-					break;
-				case MoveType.Right:
-					movePoint = movePositionHaver.movePoint[MoveType.Left].position;
-					break;
-				case MoveType.Up:
-					movePoint = movePositionHaver.movePoint[MoveType.Down].position;
-					break;
-				case MoveType.Down:
-					movePoint = movePositionHaver.movePoint[MoveType.Up].position;
-					break;
-			}
-			GameObject.FindGameObjectWithTag("Player").transform.position = movePoint;
 		}
 
 

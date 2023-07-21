@@ -9,9 +9,13 @@ namespace Map
 		[SerializeField]
 		private MapMoveManager.MoveType moveType;
 
-		public void OnTriggerEnter(Collider other)
+		private void OnTriggerEnter2D(Collider2D collision)
 		{
-			MapMoveManager.Instance.MoveScene(moveType);
+			if (collision.gameObject.CompareTag("Player"))
+			{
+				Debug.Log("Move Scene");
+				MapMoveManager.Instance.MoveScene(moveType);
+			}
 		}
 	}
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEditor.SceneManagement;
+using UnityEditor.SceneTemplate;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -33,14 +34,16 @@ namespace Map
 			exampleAsset.iconType = IconType.MapIcon1;
 			exampleAsset.pos = pos;
 			exampleAsset.sceneName = $"Map({pos.x},{pos.y})";
+
 			AssetDatabase.CreateAsset(exampleAsset, $"Assets/Resources/MapDatas/Map({pos.x},{pos.y}).asset");
 
+			Scene templateScene = EditorSceneManager.OpenScene("Assets/Resources/MapDatas/TemplateScene.unity", OpenSceneMode.Single);
 			// Create a new scene with the desired name and path
-			Scene newScene = EditorSceneManager.NewScene(NewSceneSetup.DefaultGameObjects, NewSceneMode.Single);
+			//Scene newScene = EditorSceneManager.NewScene(NewSceneSetup.DefaultGameObjects, NewSceneMode.Single);
 
 			// Save the scene to the specified path (modify this path as per your requirements)
 			string scenePath = $"Assets/Resources/MapDatas/Scenes/Map({pos.x},{pos.y}).unity";
-			EditorSceneManager.SaveScene(newScene, scenePath);
+			EditorSceneManager.SaveScene(templateScene, scenePath);
 
 			// Optionally, set the active scene to the new scene
 			EditorBuildSettingsScene[] buildScenes = EditorBuildSettings.scenes;
@@ -49,7 +52,7 @@ namespace Map
 			System.Array.Resize(ref buildScenes, newIndex + 1);
 			buildScenes[newIndex] = buildScene;
 			EditorBuildSettings.scenes = buildScenes;
-			EditorSceneManager.SetActiveScene(newScene);
+			EditorSceneManager.OpenScene(scenePath);
 			AssetDatabase.Refresh();
 			return exampleAsset;
 		}
