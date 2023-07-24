@@ -8,6 +8,9 @@ public class PlayerController : MonoBehaviour
     private BoxCollider2D col;
 
     private Animator anim;
+    private Camera mainCam;
+
+    [SerializeField] private GameObject bullet;
 
     [SerializeField] private float speed;
     [SerializeField] private float jumpPower;
@@ -20,6 +23,8 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        mainCam = Camera.main;
+        
         rigid = GetComponent<Rigidbody2D>();
         col = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
@@ -29,6 +34,7 @@ public class PlayerController : MonoBehaviour
     {
         Move();
         Jump();
+        Fire();
         GroundCheck();
     }
 
@@ -56,6 +62,18 @@ public class PlayerController : MonoBehaviour
             isCanJump = false;
             rigid.velocity = new Vector2(rigid.velocity.x, 0);
             rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+        }
+    }
+
+    public void Fire()
+    {
+        if(Input.GetMouseButtonDown(1))
+        {
+            Vector3 dir = (mainCam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -mainCam.transform.position.z)) - transform.position).normalized;
+            Debug.Log(dir);
+            Debug.Log(mainCam);
+            GameObject clone = Instantiate(bullet, transform.position + dir, transform.rotation);
+            clone.GetComponent<Rigidbody2D>().AddForce(dir * 5, ForceMode2D.Impulse);
         }
     }
 
