@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     private Camera mainCam;
 
     [SerializeField] private GameObject bullet;
+    [SerializeField] private GameObject chargedBullet;
 
     [SerializeField] private float speed;
     [SerializeField] private float jumpPower;
@@ -18,7 +19,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 moveVelocity;
     private float maxMoveVelocity;
 
-
+    private float fireTimer = 0f;
     private bool isCanJump = true;
 
     private void Awake()
@@ -67,13 +68,19 @@ public class PlayerController : MonoBehaviour
 
     public void Fire()
     {
-        if(Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButton(1))
+            fireTimer += Time.deltaTime;
+
+        else if (Input.GetMouseButtonUp(1))
         {
-            Vector3 dir = (mainCam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -mainCam.transform.position.z)) - transform.position).normalized;
-            Debug.Log(dir);
-            Debug.Log(mainCam);
-            GameObject clone = Instantiate(bullet, transform.position + dir, transform.rotation);
+            Vector3 mousePos = mainCam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -mainCam.transform.position.z));
+            Vector3 dir = (mousePos - transform.position).normalized;
+            GameObject clone = fireTimer < 1f? 
+                Instantiate(bullet, transform.position + dir, transform.rotation) : 
+                Instantiate(chargedBullet, transform.position + dir, transform.rotation);
+
             clone.GetComponent<Rigidbody2D>().AddForce(dir * 5, ForceMode2D.Impulse);
+            fireTimer = 0f;
         }
     }
 
@@ -84,14 +91,8 @@ public class PlayerController : MonoBehaviour
         var hit = Physics2D.BoxCast(transform.position, Vector2.one, 0, Vector2.down, 0.1f, 1 << 8);
         if (hit.collider != null)
         {
-            Debug.Log(hit);
             isCanJump = true;
         }
-    }
-
-    private void OnDrawGizmos()
-    {
-        
     }
 
 }
