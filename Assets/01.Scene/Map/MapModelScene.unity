@@ -537,6 +537,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b2ce770e04572243bf7f42d9873133e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bullet: {fileID: 3324747529362105170, guid: b43b77f5772554a48a4ed46c5df01165, type: 3}
+  chargedBullet: {fileID: 3324747529362105170, guid: f5a718e78a04e6f42995d9927e0a93e4, type: 3}
   speed: 10
   jumpPower: 5
   fallMultiplier: 2.5

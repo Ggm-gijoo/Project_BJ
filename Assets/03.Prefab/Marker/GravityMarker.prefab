@@ -152,7 +152,7 @@ GameObject:
   - component: {fileID: 3774473695471371853}
   m_Layer: 8
   m_Name: GravityMarker
-  m_TagString: Untagged
+  m_TagString: Marker
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

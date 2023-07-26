@@ -11,10 +11,11 @@ namespace Marker
         [SerializeField] private PolygonCollider2D polygonCollider2D;
 		[SerializeField] private MarkerPolyCollider markerPolyCollider;
 		private bool isDrawComplete;
+		private int hp;
         
         public virtual void OnBeginDraw()
         {
-            
+			hp = 7;
         }
         
         public virtual void OnDrawing()
@@ -37,6 +38,13 @@ namespace Marker
 			// PolygonCollider2D의 points 배열을 설정합니다.
 			polygonCollider2D.SetPath(0, polygonPoints);
 		}
+
+		public virtual void OnDamaged(int dmg)
+        {
+			hp -= dmg;
+			if (hp <= 0)
+				Destroy(gameObject);
+        }
 
         public void Update()
         {
