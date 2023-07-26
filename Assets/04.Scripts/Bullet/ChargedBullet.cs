@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class ChargedBullet : MonoBehaviour
 {
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.collider.CompareTag("Marker"))
+        if (collision.CompareTag("Marker"))
         {
-            collision.gameObject.GetComponent<Marker.BaseMarker>().OnDamaged(10);
+            collision.GetComponent<Marker.BaseMarker>().OnDamaged(10);
         }
     }
 }
