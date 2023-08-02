@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3599200129532963701
+--- !u!1 &2120805857715296174
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,42 +8,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8708780025078928261}
-  - component: {fileID: 1646738877516532853}
-  - component: {fileID: 2301779723231171345}
-  - component: {fileID: 4167372708218156134}
-  - component: {fileID: -4728673189617704037}
-  - component: {fileID: 4519785281002942936}
+  - component: {fileID: 3966824502766922469}
+  - component: {fileID: 3380363270264306032}
   m_Layer: 8
-  m_Name: BlackMarker
-  m_TagString: Marker
+  m_Name: Marker
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8708780025078928261
+--- !u!4 &3966824502766922469
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3599200129532963701}
+  m_GameObject: {fileID: 2120805857715296174}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_Father: {fileID: 8708780025078928261}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!120 &1646738877516532853
+--- !u!120 &3380363270264306032
 LineRenderer:
   serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3599200129532963701}
+  m_GameObject: {fileID: 2120805857715296174}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -140,6 +136,41 @@ LineRenderer:
   m_UseWorldSpace: 0
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!1 &3599200129532963701
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8708780025078928261}
+  - component: {fileID: 2301779723231171345}
+  - component: {fileID: 789708450455326155}
+  m_Layer: 8
+  m_Name: BlackMarker
+  m_TagString: Marker
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8708780025078928261
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3599200129532963701}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3966824502766922469}
+  - {fileID: 5637807675337934150}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2301779723231171345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,10 +183,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e120e61c8c9b6a4f8bb8a67c080ba9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lineRenderer: {fileID: 1646738877516532853}
-  polygonCollider2D: {fileID: -4728673189617704037}
-  markerPolyCollider: {fileID: 4519785281002942936}
---- !u!50 &4167372708218156134
+  lineRenderer: {fileID: 3380363270264306032}
+  polygonCollider2D: {fileID: 6892409415595589156}
+  markerPolyCollider: {fileID: 5844520930422914847}
+  originMaterial: {fileID: 2100000, guid: f62e2303496b73e4d91bfa5d8dc480cb, type: 2}
+  hitMaterial: {fileID: 2100000, guid: 16254349e7d0604459f374bc4411c517, type: 2}
+--- !u!50 &789708450455326155
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -182,13 +215,46 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
---- !u!60 &-4728673189617704037
+--- !u!1 &7642977655950416324
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5637807675337934150}
+  - component: {fileID: 6892409415595589156}
+  - component: {fileID: 5844520930422914847}
+  m_Layer: 8
+  m_Name: Col
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5637807675337934150
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7642977655950416324}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8708780025078928261}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &6892409415595589156
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3599200129532963701}
+  m_GameObject: {fileID: 7642977655950416324}
   m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
@@ -232,17 +298,17 @@ PolygonCollider2D:
       - {x: 0.14694634, y: -0.20225424}
       - {x: 0.23776412, y: 0.07725428}
   m_UseDelaunayMesh: 0
---- !u!114 &4519785281002942936
+--- !u!114 &5844520930422914847
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3599200129532963701}
+  m_GameObject: {fileID: 7642977655950416324}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa3ed0c79737c60438223143a77b2897, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lineRenderer: {fileID: 1646738877516532853}
-  polygonCollider: {fileID: -4728673189617704037}
+  lineRenderer: {fileID: 3380363270264306032}
+  polygonCollider: {fileID: 6892409415595589156}

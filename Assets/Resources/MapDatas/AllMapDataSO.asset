@@ -14,6 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridSize: {x: 11, y: 11}
   mapDataDic:
-    _serializedList: []
+    _serializedList:
+    - Key: {x: 0, y: 0}
+      Value: {fileID: 11400000, guid: ad548ee4706a32b4ba9e9a8e6f80671d, type: 2}
+    - Key: {x: 1, y: 0}
+      Value: {fileID: 11400000, guid: 772c7d16cec479142bde42b7a9882781, type: 2}
   editorAddMapDataSO: {x: 0, y: 0}
   editorMapDataSO: {fileID: 11400000, guid: 983acf213e5fa93448f4a1966d5c0a3f, type: 2}

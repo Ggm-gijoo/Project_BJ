@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pool;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,8 +11,8 @@ public class PlayerController : MonoBehaviour
     private Animator anim;
     private Camera mainCam;
 
-    [SerializeField] private GameObject bullet;
-    [SerializeField] private GameObject chargedBullet;
+    [SerializeField] private string bullet;
+    [SerializeField] private string chargedBullet;
 
     [SerializeField] private float speed;
     [SerializeField] private float jumpPower;
@@ -73,18 +74,27 @@ public class PlayerController : MonoBehaviour
 
         else if (Input.GetMouseButtonUp(1))
         {
-            Vector3 mousePos = mainCam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -mainCam.transform.position.z));
-            Vector3 dir = (mousePos - transform.position).normalized;
-            GameObject clone = fireTimer < 1f? 
-                Instantiate(bullet, transform.position + dir, transform.rotation) : 
-                Instantiate(chargedBullet, transform.position + dir, transform.rotation);
-
-            clone.GetComponent<Rigidbody2D>().AddForce(dir * 5, ForceMode2D.Impulse);
+			Vector3 dir = GetDirection();
+			GetBullet(dir).StartMove(dir * 5);
             fireTimer = 0f;
         }
     }
 
-    public void GroundCheck()
+    private Vector3 GetDirection()
+	{
+		Vector3 mousePos = mainCam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -mainCam.transform.position.z));
+		return (mousePos - transform.position).normalized;
+	}
+
+    private IProjectile GetBullet(Vector3 dir)
+    {
+		GameObject clone = fireTimer < 1f ?
+				ObjectPoolManager.Instance.GetObject(bullet, transform.position + dir * 0.5f, transform.rotation) :
+				ObjectPoolManager.Instance.GetObject(chargedBullet, transform.position + dir * 0.5f, transform.rotation);
+        return clone.GetComponent<IProjectile>();
+	}
+
+	public void GroundCheck()
     {
         if (rigid.velocity.y > 0 || isCanJump) return;
 

@@ -57,7 +57,7 @@ namespace Marker
         {
             currentLine = Instantiate(linePrefab, Vector3.zero, Quaternion.identity);
             currentMarker = currentLine.GetComponent<BaseMarker>();
-            lineRenderer = currentLine.GetComponent<LineRenderer>();
+            lineRenderer = currentMarker.LineRenderer;
             fingerPositions.Clear();
             fingerPositions.Add(Camera.main.ScreenToWorldPoint(mousePos));
             fingerPositions.Add(Camera.main.ScreenToWorldPoint(mousePos));

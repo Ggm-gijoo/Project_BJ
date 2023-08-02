@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Marker
 {
-    public class RubberMarker : BaseMarker
+    public class RubberMarker : BaseMarker, IHitFromBullet
     {
         [SerializeField] private float multiply = 1f;
         private float maxBounceForce = 500f; // 최대 튕김 힘
@@ -49,7 +49,21 @@ namespace Marker
                 Debug.Log($"튕겨냄 {collisionVelocity.magnitude}");
             }
         }
-        
-        
-    }
+
+		public new void Hit(int damage, IProjectile projectile)
+		{
+			hp -= damage;
+			//projectile.CollitionImplement();
+			if (hp <= 0)
+			{
+				Destroy(gameObject);
+			}
+			else
+			{
+				StartCoroutine(HitEffect());
+			}
+
+		}
+
+	}
 }

@@ -2,20 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using DG.Tweening;
 
 namespace Marker
 {
-    public class BaseMarker : MonoBehaviour
-    {
-        [SerializeField] private LineRenderer lineRenderer;
+	public class BaseMarker : MonoBehaviour, IHitFromBullet
+	{
+		public LineRenderer LineRenderer => lineRenderer;
+		[SerializeField] private LineRenderer lineRenderer;
         [SerializeField] private PolygonCollider2D polygonCollider2D;
 		[SerializeField] private MarkerPolyCollider markerPolyCollider;
-		private bool isDrawComplete;
-		private int hp;
+		[SerializeField] private Material originMaterial;
+		[SerializeField] private Material hitMaterial;
+		protected bool isDrawComplete;
+		protected int hp;
         
         public virtual void OnBeginDraw()
         {
-			hp = 7;
+			hp = 5;
         }
         
         public virtual void OnDrawing()
@@ -39,22 +43,6 @@ namespace Marker
 			polygonCollider2D.SetPath(0, polygonPoints);
 		}
 
-		public virtual void OnDamaged(int dmg)
-        {
-			hp -= dmg;
-			if (hp <= 0)
-				Destroy(gameObject);
-        }
-
-        public void Update()
-        {
-            if (!isDrawComplete)
-            {
-                return;
-            }
-
-            //UpdatePositionFromTransform();
-        }
 		private Vector2[] CreatePolygonPoints(Vector3[] linePoints, float thickness)
 		{
 			int pointCount = linePoints.Length;
@@ -83,6 +71,28 @@ namespace Marker
 			}
 
 			return polygonPoints;
+		}
+
+		public void Hit(int damage, IProjectile projectile)
+		{
+			hp -= damage;
+			projectile.CollitionImplement();
+			if (hp <= 0)
+			{
+				Destroy(gameObject);
+			}
+			else
+			{
+				StartCoroutine(HitEffect());
+			}
+		}
+
+		protected IEnumerator HitEffect()
+		{
+			lineRenderer.transform.DOShakePosition(0.2f, 0.3f, 20);
+			lineRenderer.material = hitMaterial;
+			yield return new WaitForSeconds(0.2f);
+			lineRenderer.material = originMaterial;
 		}
 	}
 }

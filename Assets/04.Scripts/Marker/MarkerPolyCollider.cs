@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(LineRenderer))]
+//[RequireComponent(typeof(LineRenderer))]
 [RequireComponent(typeof(PolygonCollider2D))]
 public class MarkerPolyCollider : MonoBehaviour
 {
