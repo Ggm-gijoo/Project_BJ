@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  eyeMultiply: 0.2
 --- !u!1 &8102608900254459204
 GameObject:
   m_ObjectHideFlags: 0
