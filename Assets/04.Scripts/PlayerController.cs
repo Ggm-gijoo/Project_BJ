@@ -9,7 +9,8 @@ public class PlayerController : MonoBehaviour
     private BoxCollider2D col;
 
     private Animator anim;
-    private Camera mainCam;
+    [SerializeField]
+    private Camera ingameCam;
 
     [SerializeField] private string bullet;
     [SerializeField] private string chargedBullet;
@@ -25,8 +26,6 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        mainCam = Camera.main;
-        
         rigid = GetComponent<Rigidbody2D>();
         col = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
@@ -82,7 +81,7 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 GetDirection()
 	{
-		Vector3 mousePos = mainCam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -mainCam.transform.position.z));
+		Vector3 mousePos = ingameCam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -ingameCam.transform.position.z));
 		return (mousePos - transform.position).normalized;
 	}
 

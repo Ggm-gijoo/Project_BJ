@@ -6,16 +6,11 @@ public class PlayerEye : MonoBehaviour
 {
 	public float moveSpeed = 5f;
 	public float eyeMultiply = 0.3f;
-	private Camera mainCam;
-
-	private void Start()
-	{
-		mainCam = Camera.main;
-	}
+	[SerializeField] private Camera ingameCam;
 
 	private void Update()
 	{
-		Vector3 mousePos = mainCam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -mainCam.transform.position.z));
+		Vector3 mousePos = ingameCam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -ingameCam.transform.position.z));
 		
 		Vector3 direction = (mousePos - transform.parent.position);
 		direction.z = 0f;

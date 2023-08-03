@@ -28,6 +28,9 @@ namespace Map
 		private bool isInit;
 
 		[SerializeField]
+		private EventSO mapMoveEventSO;
+
+		[SerializeField]
 		private Vector2 editorLoadMapFirst;
 
 		void Awake()
@@ -88,6 +91,7 @@ namespace Map
 				}
 			}
 			SceneManager.LoadScene(allMapDataSO.mapDataDic[currentPos].sceneName, LoadSceneMode.Additive);
+			//mapMoveEventSO.Raise();
 		}
 
 

@@ -27,9 +27,14 @@ namespace Marker
         private List<Vector2> fingerPositions = new List<Vector2>();
         private Vector3 mousePos;
         private BaseMarker currentMarker;
+        private Camera inGameCam;
 
         private void Update()
         {
+            if (inGameCam == null) 
+            {
+                return;
+            }
             mousePos = Input.mousePosition;
             mousePos.z = 10;
             if (Input.GetMouseButtonDown(0))
@@ -39,7 +44,7 @@ namespace Marker
             }
             if(Input.GetMouseButton(0))
             {
-                Vector2 tempFingerPos = Camera.main.ScreenToWorldPoint(mousePos);
+                Vector2 tempFingerPos = inGameCam.ScreenToWorldPoint(mousePos);
                 if (Vector2.Distance(tempFingerPos, fingerPositions[fingerPositions.Count - 1]) > 0.1f)
                 {
                     UpdateLine(tempFingerPos);
@@ -60,8 +65,8 @@ namespace Marker
             currentMarker = currentLine.GetComponent<BaseMarker>();
             lineRenderer = currentMarker.LineRenderer;
             fingerPositions.Clear();
-            fingerPositions.Add(Camera.main.ScreenToWorldPoint(mousePos));
-            fingerPositions.Add(Camera.main.ScreenToWorldPoint(mousePos));
+            fingerPositions.Add(inGameCam.ScreenToWorldPoint(mousePos));
+            fingerPositions.Add(inGameCam.ScreenToWorldPoint(mousePos));
             lineRenderer.positionCount = 2;
 			lineRenderer.SetPosition(0, fingerPositions[0]);
             lineRenderer.SetPosition(1, fingerPositions[1]);
@@ -74,5 +79,9 @@ namespace Marker
             lineRenderer.SetPosition(lineRenderer.positionCount - 1, newFingerPos);
         }
         
+        public void ResetCamera()
+        {
+            inGameCam = InGameCam.instance.GetComponent<Camera>();
+		}
     }
 }
