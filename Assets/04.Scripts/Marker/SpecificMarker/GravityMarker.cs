@@ -14,6 +14,7 @@ namespace Marker
 		private float multiply = 2f;
 		[SerializeField]
 		private GameObject trailRenderer;
+		public new string Key => "GravityMarker";
 
 		public override void OnEndDraw()
         {

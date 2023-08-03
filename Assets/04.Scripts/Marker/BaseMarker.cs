@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using DG.Tweening;
+using Pool;
 
 namespace Marker
 {
-	public class BaseMarker : MonoBehaviour, IHitFromBullet
+	public class BaseMarker : MonoBehaviour, IHitFromBullet, IPool
 	{
 		public LineRenderer LineRenderer => lineRenderer;
+
+		public string Key => "Marker";
+
 		[SerializeField] private LineRenderer lineRenderer;
         [SerializeField] private PolygonCollider2D polygonCollider2D;
 		[SerializeField] private MarkerPolyCollider markerPolyCollider;
@@ -20,7 +24,7 @@ namespace Marker
         public virtual void OnBeginDraw()
         {
 			hp = 5;
-        }
+		}
         
         public virtual void OnDrawing()
         {
@@ -79,7 +83,7 @@ namespace Marker
 			projectile.CollitionImplement();
 			if (hp <= 0)
 			{
-				Destroy(gameObject);
+				PoolThisObject();
 			}
 			else
 			{
@@ -93,6 +97,23 @@ namespace Marker
 			lineRenderer.material = hitMaterial;
 			yield return new WaitForSeconds(0.2f);
 			lineRenderer.material = originMaterial;
+		}
+
+		public void PoolThisObject()
+		{
+			PoolThisObject(gameObject);
+		}
+
+		public void PoolThisObject(GameObject gameObject)
+		{
+			lineRenderer.material = originMaterial;
+			Vector3[] polygonPoints = new Vector3[0];
+			Vector2[] polygonPoints2 = new Vector2[0];
+			lineRenderer.positionCount = 0;
+			lineRenderer.SetPositions(polygonPoints);
+			polygonCollider2D.SetPath(0, polygonPoints2);
+			gameObject.SetActive(false);
+			ObjectPoolManager.Instance.RegisterObjectAsync(Key, gameObject);
 		}
 	}
 }

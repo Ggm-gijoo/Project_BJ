@@ -1,3 +1,4 @@
+using Pool;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,19 +8,19 @@ namespace Marker
 {
     public class DrawMarker : MonoBehaviour
     {
-        public GameObject LinePrefab
+        public string LineAddress
         {
             get
             {
-                return linePrefab;
+                return lineaddress;
             }
             set
             {
-                linePrefab = value;
+                lineaddress = value;
             }
         }
         
-        public GameObject linePrefab;
+        public string lineaddress;
         public GameObject currentLine;
 
         private LineRenderer lineRenderer;
@@ -55,13 +56,14 @@ namespace Marker
 
         private void CreateLine()
         {
-            currentLine = Instantiate(linePrefab, Vector3.zero, Quaternion.identity);
+            currentLine = ObjectPoolManager.Instance.GetObject(lineaddress, Vector3.zero, Quaternion.identity);
             currentMarker = currentLine.GetComponent<BaseMarker>();
             lineRenderer = currentMarker.LineRenderer;
             fingerPositions.Clear();
             fingerPositions.Add(Camera.main.ScreenToWorldPoint(mousePos));
             fingerPositions.Add(Camera.main.ScreenToWorldPoint(mousePos));
-            lineRenderer.SetPosition(0, fingerPositions[0]);
+            lineRenderer.positionCount = 2;
+			lineRenderer.SetPosition(0, fingerPositions[0]);
             lineRenderer.SetPosition(1, fingerPositions[1]);
         }
 

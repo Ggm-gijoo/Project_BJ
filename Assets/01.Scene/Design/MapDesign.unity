@@ -797,9 +797,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 335424cbea467864aa928ce2e452f1d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blackMarkerPrefab: {fileID: 3599200129532963701, guid: c8b5fe99da7dc5944a3c2bb6f040754a, type: 3}
-  gravityMarkerPrefab: {fileID: 3599200129532963701, guid: 76b18b0c05ec0f240aa56d5581a9045a, type: 3}
-  rubberMarkerPrefab: {fileID: 3599200129532963701, guid: 8a0f079dfb072b34297f74772e71e85d, type: 3}
+  blackMarkerAddress: Marker
+  gravityMarkerAddress: GravityMarker
+  rubberMarkerAddress: RubberMarker
   drawMarker: {fileID: 1415703804}
 --- !u!1001 &450158387
 PrefabInstance:
@@ -6099,7 +6099,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f83b8fc23a7dd3749a31e95836500035, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  linePrefab: {fileID: 3599200129532963701, guid: c8b5fe99da7dc5944a3c2bb6f040754a, type: 3}
+  lineaddress: Marker
   currentLine: {fileID: 0}
 --- !u!1 &1452017569
 GameObject:

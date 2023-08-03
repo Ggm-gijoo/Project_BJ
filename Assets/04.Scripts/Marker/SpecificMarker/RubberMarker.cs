@@ -9,8 +9,9 @@ namespace Marker
     {
         [SerializeField] private float multiply = 1f;
         private float maxBounceForce = 500f; // 최대 튕김 힘
-        
-        private void OnCollisionEnter2D(Collision2D collision)
+		public new string Key => "RubberMarker";
+
+		private void OnCollisionEnter2D(Collision2D collision)
         {
             Bounce(collision);
         }
@@ -56,7 +57,7 @@ namespace Marker
 			//projectile.CollitionImplement();
 			if (hp <= 0)
 			{
-				Destroy(gameObject);
+				PoolThisObject();
 			}
 			else
 			{
