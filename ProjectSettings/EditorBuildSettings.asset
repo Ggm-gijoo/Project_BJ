@@ -25,17 +25,17 @@ EditorBuildSettings:
     guid: 580e31ec86f2f2c4eb15963911b04bb8
   - enabled: 0
     path: Assets/Resources/MapDatas/Scenes/Map(1,1).unity
-    guid: aad9bca6940d8f841bf32ae87c8543e0
+    guid: 8c66bdac602e4934891deef9e45343c1
   - enabled: 1
     path: Assets/Resources/MapDatas/Scenes/Map(2,1).unity
     guid: 562774850fe67494e98f9a233b9be06d
   - enabled: 1
     path: Assets/Resources/MapDatas/Scenes/Map(2,0).unity
     guid: e2b2ab7eeb2926b45b3abb8121e5cafa
-  - enabled: 1
+  - enabled: 0
     path: Assets/Resources/MapDatas/Scenes/Map(2,-1).unity
     guid: 8d89a5b209c00ac4896bee27ef9d36a6
-  - enabled: 1
+  - enabled: 0
     path: Assets/Resources/MapDatas/Scenes/Map(3,0).unity
     guid: c8c474b0375d731409030eb64c87bae7
   - enabled: 0
@@ -50,26 +50,44 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Resources/MapDatas/Scenes/Map(2,0).unity
     guid: e2b2ab7eeb2926b45b3abb8121e5cafa
-  - enabled: 1
+  - enabled: 0
     path: Assets/Resources/MapDatas/Scenes/Map(3,0).unity
     guid: c8c474b0375d731409030eb64c87bae7
-  - enabled: 1
+  - enabled: 0
     path: Assets/Resources/MapDatas/Scenes/Map(3,-1).unity
     guid: 6562311f568ebc84cbc84a7d1bbbb868
-  - enabled: 1
+  - enabled: 0
     path: Assets/Resources/MapDatas/Scenes/Map(2,-1).unity
     guid: 8d89a5b209c00ac4896bee27ef9d36a6
   - enabled: 1
     path: Assets/Resources/MapDatas/Scenes/Map(2,1).unity
     guid: 562774850fe67494e98f9a233b9be06d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Resources/MapDatas/Scenes/Map(3,1).unity
     guid: 63d6dbbf8fc2f6443b67a9b0115b1798
-  - enabled: 1
+  - enabled: 0
     path: Assets/Resources/MapDatas/Scenes/Map(4,0).unity
     guid: b57e0c35f86ac21469b8f2e6a739a644
   - enabled: 1
     path: Assets/01.Scene/Design/MapDesign.unity
     guid: a969831af66b59a4686d8f3fa6bd1eb6
+  - enabled: 1
+    path: Assets/01.Scene/HUDScene.unity
+    guid: 2f075e752366c52428e9f6b128a867e2
+  - enabled: 1
+    path: Assets/Resources/MapDatas/Scenes/Map(0,0).unity
+    guid: efb4e0c728b72774c83f9b6cac7a2740
+  - enabled: 1
+    path: Assets/Resources/MapDatas/Scenes/Map(1,0).unity
+    guid: 580e31ec86f2f2c4eb15963911b04bb8
+  - enabled: 1
+    path: Assets/Resources/MapDatas/Scenes/Map(2,0).unity
+    guid: e2b2ab7eeb2926b45b3abb8121e5cafa
+  - enabled: 1
+    path: Assets/Resources/MapDatas/Scenes/Map(2,1).unity
+    guid: 562774850fe67494e98f9a233b9be06d
+  - enabled: 1
+    path: Assets/Resources/MapDatas/Scenes/Map(1,1).unity
+    guid: 8c66bdac602e4934891deef9e45343c1
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 721f5d5fd39319d4ea8ffe7dad2d315a, type: 2}

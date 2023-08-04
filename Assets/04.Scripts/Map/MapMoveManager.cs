@@ -1,3 +1,4 @@
+using DG.Tweening;
 using Map;
 using System.Collections;
 using System.Collections.Generic;
@@ -33,6 +34,12 @@ namespace Map
 		[SerializeField]
 		private Vector2 editorLoadMapFirst;
 
+		[SerializeField]
+		private Material sceneMaterial;
+
+		[SerializeField]
+		private Renderer screenRenderer;
+
 		void Awake()
 		{
 			if (!isInit)
@@ -44,6 +51,7 @@ namespace Map
 		{
 			SceneManager.LoadScene(allMapDataSO.mapDataDic[currentPos].sceneName, LoadSceneMode.Additive);
 			currentPos = editorLoadMapFirst;
+			screenRenderer.material = sceneMaterial;
 		}
 
 		private void Init()
@@ -82,6 +90,8 @@ namespace Map
 		}
 		private IEnumerator LoadingScene(MoveType moveType)
 		{
+			FadeOutScene();
+			yield return new WaitForSeconds(1f);
 			if (!string.IsNullOrEmpty(allMapDataSO.mapDataDic[praviousePos].sceneName))
 			{
 				var op = SceneManager.UnloadSceneAsync(allMapDataSO.mapDataDic[praviousePos].sceneName);
@@ -90,14 +100,40 @@ namespace Map
 					yield return null;
 				}
 			}
-			SceneManager.LoadScene(allMapDataSO.mapDataDic[currentPos].sceneName, LoadSceneMode.Additive);
-			//mapMoveEventSO.Raise();
+			Time.timeScale = 0f;
+			var op2 = SceneManager.LoadSceneAsync(allMapDataSO.mapDataDic[currentPos].sceneName, LoadSceneMode.Additive);
+			op2.allowSceneActivation = false;
+			while(op2.progress < 0.9f)
+			{
+				yield return null;
+			}
+			Time.timeScale = 1f;
+			op2.allowSceneActivation = true;
+			FadeInScene();
+
+			//Time.timeScale = 1f;
+			yield return null;
 		}
 
 
 		public void TeleportScene()
 		{
 			//Á¦ÀÛÁß
+		}
+
+		public void FadeOutScene()
+		{
+			DoFade(10, -10f, 1f);
+		}
+		public void FadeInScene()
+		{
+			DoFade(-10f, 10, 1f);
+		}
+
+		private void DoFade(float start, float dest, float time)
+		{
+			var mat = screenRenderer.material;
+			DOTween.To(() => start, x => mat.SetFloat("_SpiltValue", x), dest, time);
 		}
 	}
 

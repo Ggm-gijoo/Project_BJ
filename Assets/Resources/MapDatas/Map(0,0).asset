@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc16346ff339f21429080ddd2e7382fd, type: 3}
   m_Name: Map(0,0)
   m_EditorClassIdentifier: 
-  iconType: 1
+  iconType: 2
   pos: {x: 0, y: 0}
   sceneName: Map(0,0)

@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc16346ff339f21429080ddd2e7382fd, type: 3}
-  m_Name: Map(2,-1)
+  m_Name: Map(1,1)
   m_EditorClassIdentifier: 
   iconType: 1
-  pos: {x: 2, y: -1}
-  sceneName: Map(2,-1)
+  pos: {x: 1, y: 1}
+  sceneName: Map(1,1)

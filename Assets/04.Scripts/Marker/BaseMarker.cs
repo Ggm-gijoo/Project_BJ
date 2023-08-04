@@ -93,7 +93,10 @@ namespace Marker
 
 		protected IEnumerator HitEffect()
 		{
-			lineRenderer.transform.DOShakePosition(0.2f, 0.3f, 20);
+			lineRenderer.transform.DOShakePosition(0.2f, 0.3f, 20).OnComplete(() => 
+			{
+				lineRenderer.transform.localPosition = Vector3.zero;
+			});
 			lineRenderer.material = hitMaterial;
 			yield return new WaitForSeconds(0.2f);
 			lineRenderer.material = originMaterial;
