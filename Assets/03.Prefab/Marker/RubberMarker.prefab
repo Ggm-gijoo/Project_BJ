@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8708780025078928261}
   - component: {fileID: 495241027552985911}
   - component: {fileID: 2320243839710450625}
+  - component: {fileID: 2142788212747005231}
   m_Layer: 0
   m_Name: RubberMarker
   m_TagString: Marker
@@ -74,12 +75,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce1a5aaf120db3c47a16698d6f0c56ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  markerType: 3
   lineRenderer: {fileID: 7466734645601958800}
   polygonCollider2D: {fileID: 8330215393830623358}
   markerPolyCollider: {fileID: 3069569794278302476}
   originMaterial: {fileID: 2100000, guid: f163b1034224ea34aa812f4a850f39cb, type: 2}
   hitMaterial: {fileID: 2100000, guid: 16254349e7d0604459f374bc4411c517, type: 2}
   multiply: 1.07
+--- !u!114 &2142788212747005231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3599200129532963701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1a7cea45c3a274094fb4a2d66f8abc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 936c776d410c6d848bd3ae1c60f0dbac, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2320243839710450625}
+        m_TargetAssemblyTypeName: Marker.BaseMarker, Assembly-CSharp
+        m_MethodName: PoolThisObject
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5438714243519653241
 GameObject:
   m_ObjectHideFlags: 0

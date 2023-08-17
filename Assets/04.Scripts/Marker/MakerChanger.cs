@@ -10,28 +10,54 @@ namespace Marker
         [SerializeField] private string gravityMarkerAddress = "GravityMarker";
         [SerializeField] private string rubberMarkerAddress = "RubberMarker";
         [SerializeField] private DrawMarker drawMarker;
-        
+
+        [SerializeField] private Texture2D blackMarkerCursor;
+        [SerializeField] private Texture2D gravityMarkerCursor;
+        [SerializeField] private Texture2D rubberMarkerCursor;
+
         private int index = 0;
+
+        private void Start()
+		{
+			ChangeDrawMarkerAddress(blackMarkerAddress, blackMarkerCursor);
+		}
 
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-				ChangeDrawMarkerAddress(blackMarkerAddress);
+				ChangeDrawMarkerAddress(MarkerType.Black);
             }
             if (Input.GetKeyDown(KeyCode.Alpha2))
             {
-				ChangeDrawMarkerAddress(gravityMarkerAddress);
+				ChangeDrawMarkerAddress(MarkerType.Gravity);
             }
             if (Input.GetKeyDown(KeyCode.Alpha3))
             {
-				ChangeDrawMarkerAddress(rubberMarkerAddress);
+				ChangeDrawMarkerAddress(MarkerType.Rubber);
             }
         }
 
-        private void ChangeDrawMarkerAddress(string _address)
+        private void ChangeDrawMarkerAddress(MarkerType markerType)
         {
-            drawMarker.LineAddress = _address;
-        }
-    }   
+            switch(markerType)
+            {
+                case MarkerType.Black:
+                    ChangeDrawMarkerAddress(blackMarkerAddress, blackMarkerCursor);
+					break;
+				case MarkerType.Gravity:
+					ChangeDrawMarkerAddress(gravityMarkerAddress, gravityMarkerCursor);
+					break;
+				case MarkerType.Rubber:
+					ChangeDrawMarkerAddress(rubberMarkerAddress, rubberMarkerCursor);
+					break;
+			}
+            drawMarker.MarkerType = markerType;
+		}
+		private void ChangeDrawMarkerAddress(string _address, Texture2D _texture)
+		{
+			drawMarker.LineAddress = _address;
+			Cursor.SetCursor(_texture, new Vector2(0, 0), CursorMode.Auto);
+		}
+	}
 }

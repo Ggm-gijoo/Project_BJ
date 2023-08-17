@@ -147,6 +147,7 @@ GameObject:
   - component: {fileID: 8708780025078928261}
   - component: {fileID: 2301779723231171345}
   - component: {fileID: 789708450455326155}
+  - component: {fileID: 7046234330804226658}
   m_Layer: 8
   m_Name: BlackMarker
   m_TagString: Marker
@@ -183,6 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e120e61c8c9b6a4f8bb8a67c080ba9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  markerType: 1
   lineRenderer: {fileID: 3380363270264306032}
   polygonCollider2D: {fileID: 6892409415595589156}
   markerPolyCollider: {fileID: 5844520930422914847}
@@ -215,6 +217,34 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &7046234330804226658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3599200129532963701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1a7cea45c3a274094fb4a2d66f8abc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 936c776d410c6d848bd3ae1c60f0dbac, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2301779723231171345}
+        m_TargetAssemblyTypeName: Marker.BaseMarker, Assembly-CSharp
+        m_MethodName: PoolThisObject
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7642977655950416324
 GameObject:
   m_ObjectHideFlags: 0
