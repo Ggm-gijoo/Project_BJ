@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3051675291221478575}
   - component: {fileID: 3205252317582722349}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 495241027552985911}
   - component: {fileID: 942796093488727024}
   - component: {fileID: 5788068275157075252}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: GravityMarker
   m_TagString: Marker
   m_Icon: {fileID: 0}
@@ -261,7 +261,7 @@ GameObject:
   - component: {fileID: 819341388357786459}
   - component: {fileID: 2804077691840208705}
   - component: {fileID: 6456188441883748268}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: Col
   m_TagString: Untagged
   m_Icon: {fileID: 0}

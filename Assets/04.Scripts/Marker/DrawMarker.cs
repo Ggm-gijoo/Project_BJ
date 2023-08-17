@@ -42,6 +42,7 @@ namespace Marker
 		public string lineaddress;
         public GameObject currentLine;
 
+        [SerializeField] private LayerMask cantTouchLayerMask;
         private LineRenderer lineRenderer;
         private List<Vector2> fingerPositions = new List<Vector2>();
         private Vector3 mousePos;
@@ -51,11 +52,11 @@ namespace Marker
 
 
 		private float blackGauge = 10f;
-		private float blackMaxGauge = 10f;
+		[SerializeField] private float blackMaxGauge = 10f;
 		private float gravityGauge = 10f;
-		private float gravityMaxGauge = 10f;
+		[SerializeField] private float gravityMaxGauge = 10f;
 		private float rubberGauge = 10f;
-		private float rubberMaxGauge = 10f;
+		[SerializeField] private float rubberMaxGauge = 10f;
 
         private float praviouseGauge;
 
@@ -72,19 +73,28 @@ namespace Marker
 				praviouseGauge = GetCurrentGauge();
 				CreateLine();
                 currentMarker?.OnBeginDraw();
-            }
-            if(Input.GetMouseButton(0))
+			}
+
+			if (Input.GetMouseButton(0))
 			{
 				Vector2 tempFingerPos = inGameCam.ScreenToWorldPoint(mousePos);
-                if (Vector2.Distance(tempFingerPos, fingerPositions[fingerPositions.Count - 1]) > 0.1f)
+				float _distance = Vector2.Distance(tempFingerPos, fingerPositions[fingerPositions.Count - 1]);
+				if (_distance > 0.1f)
 				{
+					//面倒 贸府
+					if(CheckMousePosGround(tempFingerPos) || CheckBothPointBetween(fingerPositions[fingerPositions.Count - 1], tempFingerPos))
+					{
+						return;
+					}
+					//付目 侩樊 眉农
 					if (GetCurrentGauge() <= 0f)
 					{
 						return;
 					}
+					Debug.Log(_distance);
 					UpdateLine(tempFingerPos);
                     currentMarker?.OnDrawing();
-                    RemoveGauge(markerType, 1f);
+                    RemoveGauge(markerType, _distance);
 				}
             }
 
@@ -204,6 +214,36 @@ namespace Marker
 						rubberGauge = 0f;
 					}
 					break;
+			}
+		}
+
+        private bool CheckMousePosGround(Vector3 pos)
+		{
+			
+			RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero, Mathf.Infinity, cantTouchLayerMask);
+
+			if (hit.collider != null)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+        }
+
+		private bool CheckBothPointBetween(Vector3 startPoint, Vector3 endPoint)
+		{
+			Vector2 direction = endPoint - startPoint;
+			RaycastHit2D hit = Physics2D.Raycast(startPoint, direction, direction.magnitude, cantTouchLayerMask);
+
+			if (hit.collider != null)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
 			}
 		}
     }

@@ -6425,6 +6425,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lineaddress: Marker
   currentLine: {fileID: 0}
+  cantTouchLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  blackMaxGauge: 100
+  gravityMaxGauge: 10
+  rubberMaxGauge: 10
 --- !u!114 &1415703805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7106,7 +7112,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh60758
+  m_Name: pb_Mesh31664
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
