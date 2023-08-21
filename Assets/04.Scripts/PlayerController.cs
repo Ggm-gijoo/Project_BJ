@@ -11,6 +11,9 @@ public class PlayerController : MonoBehaviour
     private BoxCollider2D col;
 
     private Animator anim;
+    private ParticleSystem deathParticle;
+    private SpriteRenderer sprite;
+
     [SerializeField]
     private Camera ingameCam;
 
@@ -20,10 +23,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float jumpPower;
     [SerializeField] private float fallMultiplier;
+    [SerializeField] private SpriteRenderer eye;
     private Vector2 moveVelocity;
     private float maxMoveVelocity;
 
     private float fireTimer = 0f;
+    private bool isCanMove = true;
     private bool isCanJump = true;
     private bool isDie = false;
 
@@ -32,15 +37,23 @@ public class PlayerController : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         col = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
+        sprite = GetComponent<SpriteRenderer>();
 
+        deathParticle = GetComponentInChildren<ParticleSystem>();
+
+        sprite.color = new Color(1, 1, 1, 1);
+        eye.color = sprite.color;
         isDie = false;
     }
 
     private void Update()
     {
-        Move();
-        Jump();
-        Fire();
+        if (isCanMove)
+        {
+            Move();
+            Jump();
+            Fire();
+        }
         GroundCheck();
     }
 
@@ -108,12 +121,24 @@ public class PlayerController : MonoBehaviour
             isCanJump = true;
         }
     }
+
+    private IEnumerator OnDie()
+    {
+        isCanMove = false;
+        deathParticle.transform.SetParent(null);
+        deathParticle.Play();
+        sprite.color = new Color(1, 1, 1, 0);
+        eye.color = sprite.color;
+        yield return new WaitForSeconds(0.5f);
+        MapMoveManager.Instance.MoveScene(MapMoveManager.MoveType.Middle);
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.transform.CompareTag("CanTakeDmg") && !isDie)
         {
             isDie = true;
-            MapMoveManager.Instance.MoveScene(MapMoveManager.MoveType.Middle);
+            StartCoroutine(OnDie());
         }
     }
 
