@@ -82,7 +82,18 @@ namespace Marker
 				if (_distance > 0.1f)
 				{
 					//충돌 처리
-					if(CheckMousePosGround(tempFingerPos) || CheckBothPointBetween(fingerPositions[fingerPositions.Count - 1], tempFingerPos))
+					if(!CheckMousePosGround(tempFingerPos) && CheckBothPointBetween(fingerPositions[fingerPositions.Count - 1], tempFingerPos))
+					{
+						currentMarker.Gauge = praviouseGauge - blackGauge;
+						currentMarker.OnEndDraw();
+						currentMarker = null;
+						praviouseGauge = GetCurrentGauge();
+						CreateLine();
+						currentMarker?.OnBeginDraw();
+
+						return;
+					}
+					else if(CheckMousePosGround(tempFingerPos) || CheckBothPointBetween(fingerPositions[fingerPositions.Count - 1], tempFingerPos))
 					{
 						return;
 					}

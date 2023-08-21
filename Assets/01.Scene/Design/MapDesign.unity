@@ -6429,8 +6429,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   blackMaxGauge: 100
-  gravityMaxGauge: 10
-  rubberMaxGauge: 10
+  gravityMaxGauge: 100
+  rubberMaxGauge: 100
 --- !u!114 &1415703805
 MonoBehaviour:
   m_ObjectHideFlags: 0
