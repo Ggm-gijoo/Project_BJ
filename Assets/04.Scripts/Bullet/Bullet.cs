@@ -11,7 +11,13 @@ public class Bullet : MonoBehaviour, IProjectile
 	private LayerMask colLayerMask;
 
 	private Coroutine poolCoroutine;
-	public void PoolThisObject()
+
+    private void OnEnable()
+    {
+		gameObject.tag = "Untagged";
+	}
+
+    public void PoolThisObject()
 	{
 		PoolThisObject(gameObject);
 	}
