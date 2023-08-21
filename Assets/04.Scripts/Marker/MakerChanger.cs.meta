@@ -3,7 +3,12 @@ guid: 335424cbea467864aa928ce2e452f1d1
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - drawMarker: {instanceID: 0}
+  - blackMarkerCursor: {instanceID: 0}
+  - gravityMarkerCursor: {instanceID: 0}
+  - rubberMarkerCursor: {instanceID: 0}
+  - event_ChangeMarker: {fileID: 11400000, guid: 49bbd49903270f241b2d138905ac400a, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

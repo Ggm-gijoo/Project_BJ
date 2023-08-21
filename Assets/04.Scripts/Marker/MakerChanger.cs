@@ -15,7 +15,9 @@ namespace Marker
         [SerializeField] private Texture2D gravityMarkerCursor;
         [SerializeField] private Texture2D rubberMarkerCursor;
 
-        private int index = 0;
+		[SerializeField] private EventSO event_ChangeMarker;
+
+		private int index = 0;
 
         private void Start()
 		{
@@ -53,6 +55,7 @@ namespace Marker
 					break;
 			}
             drawMarker.MarkerType = markerType;
+            event_ChangeMarker.Raise();
 		}
 		private void ChangeDrawMarkerAddress(string _address, Texture2D _texture)
 		{
