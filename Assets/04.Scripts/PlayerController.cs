@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Pool;
+using UnityEngine.SceneManagement;
+using Map;
 
 public class PlayerController : MonoBehaviour
 {
@@ -23,12 +25,15 @@ public class PlayerController : MonoBehaviour
 
     private float fireTimer = 0f;
     private bool isCanJump = true;
+    private bool isDie = false;
 
     private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
         col = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
+
+        isDie = false;
     }
 
     private void Update()
@@ -88,8 +93,8 @@ public class PlayerController : MonoBehaviour
     private IProjectile GetBullet(Vector3 dir)
     {
 		GameObject clone = fireTimer < 1f ?
-				ObjectPoolManager.Instance.GetObject(bullet, transform.position + dir * 0.5f, transform.rotation) :
-				ObjectPoolManager.Instance.GetObject(chargedBullet, transform.position + dir * 0.5f, transform.rotation);
+				ObjectPoolManager.Instance.GetObject(bullet, transform.position + dir * .75f, transform.rotation) :
+				ObjectPoolManager.Instance.GetObject(chargedBullet, transform.position + dir * 1f, transform.rotation);
         return clone.GetComponent<IProjectile>();
 	}
 
@@ -101,6 +106,14 @@ public class PlayerController : MonoBehaviour
         if (hit.collider != null)
         {
             isCanJump = true;
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.CompareTag("CanTakeDmg") && !isDie)
+        {
+            isDie = true;
+            MapMoveManager.Instance.MoveScene(MapMoveManager.MoveType.Middle);
         }
     }
 

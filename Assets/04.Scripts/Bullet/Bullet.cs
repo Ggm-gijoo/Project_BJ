@@ -53,6 +53,7 @@ public class Bullet : MonoBehaviour, IProjectile
 		if(collision.gameObject.TryGetComponent<IHitFromBullet>(out hitFromBullet))
 		{
 			collision.gameObject.GetComponent<IHitFromBullet>().Hit(1, this);
+			gameObject.tag = "CanTakeDmg";
 		}
 		else if ((colLayerMask.value & (1 << collision.transform.gameObject.layer)) > 0)
 		{

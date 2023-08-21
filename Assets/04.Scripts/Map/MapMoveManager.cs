@@ -18,6 +18,7 @@ namespace Map
 			Right,
 			Up,
 			Down,
+			Middle,
 		}
 
 		public MoveType CurrentMoveType => currentMoveType;
@@ -62,25 +63,30 @@ namespace Map
 
 		public void MoveScene(MoveType moveType)
 		{
-			currentMoveType = moveType;
 			praviousePos = currentPos;
-
 			//¿Ãµø«“ æ¿ º≥¡§
 			switch (moveType)
 			{
 				case MoveType.Left:
 					currentPos.x += -1;
+					currentMoveType = moveType;
 					break;
 				case MoveType.Right:
 					currentPos.x += 1;
+					currentMoveType = moveType;
 					break;
 				case MoveType.Up:
 					currentPos.y += 1;
+					currentMoveType = moveType;
 					break;
 				case MoveType.Down:
 					currentPos.y += -1;
+					currentMoveType = moveType;
+					break;
+				case MoveType.Middle:
 					break;
 			}
+
 
 			//æ¿ ¿Ãµø
 			if (allMapDataSO.mapDataDic.ContainsKey(currentPos))
