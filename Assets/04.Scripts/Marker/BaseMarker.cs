@@ -23,7 +23,13 @@ namespace Marker
 
 		public LineRenderer LineRenderer => lineRenderer;
 
-		public string Key => "Marker";
+		public virtual string Key 
+		{ 
+			get
+			{
+				return "Marker";
+			}
+		}
 
 		[SerializeField] private MarkerType markerType;
 		[SerializeField] private LineRenderer lineRenderer;

@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class LoadHUD : MonoBehaviour
 {
-	public void Start()
+	public void Awake()
 	{
 		SceneManager.LoadScene("HUDScene", LoadSceneMode.Additive);
 	}
