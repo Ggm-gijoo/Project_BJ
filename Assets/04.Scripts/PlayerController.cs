@@ -127,6 +127,7 @@ public class PlayerController : MonoBehaviour
         isCanMove = false;
         deathParticle.transform.SetParent(null);
         deathParticle.Play();
+        CinemachineCameraShaking.Instance.CameraShake(5, 0.2f);
         sprite.color = new Color(1, 1, 1, 0);
         eye.color = sprite.color;
         yield return new WaitForSeconds(0.5f);
