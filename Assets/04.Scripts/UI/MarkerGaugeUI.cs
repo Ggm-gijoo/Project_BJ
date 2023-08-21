@@ -17,6 +17,7 @@ namespace UI
 
 		public void UpdateUseMarkerUI()
 		{
+			var drawMaker = MarkerManager.Instance.drawMarker;
 			float value = 0f;
 			switch (DrawMarker.Instance.MarkerType)
 			{
@@ -25,13 +26,13 @@ namespace UI
 					value = 0f;
 					break;
 				case MarkerType.Black:
-					value = DrawMarker.Instance.BlackGauge / DrawMarker.Instance.BlackMaxGauge;
+					value = drawMaker.BlackGauge / drawMaker.BlackMaxGauge;
 					break;
 				case MarkerType.Gravity:
-					value = DrawMarker.Instance.GravityGauge / DrawMarker.Instance.GravityMaxGauge;
+					value = drawMaker.GravityGauge / drawMaker.GravityMaxGauge;
 					break;
 				case MarkerType.Rubber:
-					value = DrawMarker.Instance.RubberGauge / DrawMarker.Instance.RubberMaxGauge;
+					value = drawMaker.RubberGauge / drawMaker.RubberMaxGauge;
 					break;
 			}
 			Vector2 newPos = fillColorImage.rectTransform.anchoredPosition;
@@ -41,7 +42,8 @@ namespace UI
 
 		public void UpdateChangeMarkerUI()
 		{
-			switch(DrawMarker.Instance.MarkerType)
+			var drawMaker = MarkerManager.Instance.drawMarker;
+			switch (drawMaker.MarkerType)
 			{
 
 				case MarkerType.None:
