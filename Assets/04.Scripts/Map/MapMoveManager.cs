@@ -63,6 +63,7 @@ namespace Map
 
 		public void MoveScene(MoveType moveType)
 		{
+			praviousePos = currentPos;
 			//¿Ãµø«“ æ¿ º≥¡§
 			switch (moveType)
 			{
@@ -85,7 +86,6 @@ namespace Map
 				case MoveType.Middle:
 					break;
 			}
-			praviousePos = currentPos;
 
 
 			//æ¿ ¿Ãµø

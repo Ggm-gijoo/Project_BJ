@@ -25,12 +25,15 @@ public class PlayerController : MonoBehaviour
 
     private float fireTimer = 0f;
     private bool isCanJump = true;
+    private bool isDie = false;
 
     private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
         col = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
+
+        isDie = false;
     }
 
     private void Update()
@@ -107,8 +110,11 @@ public class PlayerController : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.transform.CompareTag("CanTakeDmg"))
+        if (collision.transform.CompareTag("CanTakeDmg") && !isDie)
+        {
+            isDie = true;
             MapMoveManager.Instance.MoveScene(MapMoveManager.MoveType.Middle);
+        }
     }
 
 }
