@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Marker
   - InGameCam
+  - CanTakeDmg
   layers:
   - Default
   - TransparentFX
