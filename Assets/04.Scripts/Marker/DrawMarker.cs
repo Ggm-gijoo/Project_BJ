@@ -116,7 +116,6 @@ namespace Marker
 					UpdateLine(tempFingerPos);
                     currentMarker?.OnDrawing();
                     RemoveGauge(markerType, _distance);
-					event_UseMarker.Raise();
 				}
             }
 
@@ -165,6 +164,8 @@ namespace Marker
 			blackGauge = blackMaxGauge;
 			gravityGauge = gravityMaxGauge;
 			rubberGauge = rubberMaxGauge;
+
+			event_UseMarker.Raise();
 		}
 
         public void AddGauge(MarkerType markerType, float gauge)
@@ -194,7 +195,9 @@ namespace Marker
 					}
 					break;
 			}
-        }
+
+			event_UseMarker.Raise();
+		}
 
         private float GetCurrentGauge()
         {
@@ -237,6 +240,8 @@ namespace Marker
 					}
 					break;
 			}
+
+			event_UseMarker.Raise();
 		}
 
         private bool CheckMousePosGround(Vector3 pos)
