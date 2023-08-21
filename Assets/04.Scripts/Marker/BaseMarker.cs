@@ -9,10 +9,23 @@ namespace Marker
 {
 	public class BaseMarker : MonoBehaviour, IHitFromBullet, IPool
 	{
+		public float Gauge
+		{
+			get
+			{
+				return gauge;
+			}
+			set
+			{
+				gauge = value;
+			}
+		}
+
 		public LineRenderer LineRenderer => lineRenderer;
 
 		public string Key => "Marker";
 
+		[SerializeField] private MarkerType markerType;
 		[SerializeField] private LineRenderer lineRenderer;
         [SerializeField] private PolygonCollider2D polygonCollider2D;
 		[SerializeField] private MarkerPolyCollider markerPolyCollider;
@@ -20,6 +33,7 @@ namespace Marker
 		[SerializeField] private Material hitMaterial;
 		protected bool isDrawComplete;
 		protected int hp;
+		protected float gauge = 0f;
         
         public virtual void OnBeginDraw()
         {
@@ -83,6 +97,7 @@ namespace Marker
 			projectile.CollitionImplement();
 			if (hp <= 0)
 			{
+				MarkerManager.Instance.drawMarker.AddGauge(markerType, gauge);
 				PoolThisObject();
 			}
 			else
