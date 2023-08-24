@@ -11,7 +11,7 @@ public class GameEventManager : MonoSingleton<GameEventManager>
 
 	private void Init()
 	{
-		allGameEvent = Resources.Load<AllGameEvent>("Assets/Resources/AllGameEvent.asset");
+		allGameEvent = Resources.Load<AllGameEvent>("AllGameEvent");
 		foreach (var gameEvent in allGameEvent.gameEventList)
 		{
 			gameEventDic.Add(gameEvent.name, gameEvent);
