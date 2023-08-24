@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 138248820}
   - component: {fileID: 138248822}
   - component: {fileID: 138248821}
+  - component: {fileID: 138248823}
   m_Layer: 5
   m_Name: GravityMarker
   m_TagString: Untagged
@@ -203,6 +204,34 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 138248819}
   m_CullTransparentMesh: 1
+--- !u!114 &138248823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138248819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbdbe901609b24b439bff6b7da327ab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1796885921}
+        m_TargetAssemblyTypeName: InventoryUI, Assembly-CSharp
+        m_MethodName: ShowText
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: "\uB5A8\uC5B4\uC9C0\uB294 \uBB3C\uCCB4\uB97C \uB9CC\uB4E4
+            \uC218 \uC788\uB294 \uB9C8\uCEE4."
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &213041015
 GameObject:
   m_ObjectHideFlags: 0
@@ -214,6 +243,7 @@ GameObject:
   - component: {fileID: 213041016}
   - component: {fileID: 213041018}
   - component: {fileID: 213041017}
+  - component: {fileID: 213041019}
   m_Layer: 5
   m_Name: BlackMarker
   m_TagString: Untagged
@@ -283,6 +313,34 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 213041015}
   m_CullTransparentMesh: 1
+--- !u!114 &213041019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 213041015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbdbe901609b24b439bff6b7da327ab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1796885921}
+        m_TargetAssemblyTypeName: InventoryUI, Assembly-CSharp
+        m_MethodName: ShowText
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: "\uC9C0\uD615\uC774\uB098 \uBCBD\uC744 \uB9CC\uB4E4 \uC218
+            \uC788\uB294 \uB9C8\uCEE4."
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &234294739
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,8 +352,9 @@ GameObject:
   - component: {fileID: 234294740}
   - component: {fileID: 234294742}
   - component: {fileID: 234294741}
+  - component: {fileID: 234294743}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -359,6 +418,34 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 234294739}
   m_CullTransparentMesh: 1
+--- !u!114 &234294743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 234294739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbdbe901609b24b439bff6b7da327ab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1796885921}
+        m_TargetAssemblyTypeName: InventoryUI, Assembly-CSharp
+        m_MethodName: ShowText
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: "\uB9C8\uCEE4\uB97C \uBD80\uC2E4 \uC218 \uC788\uB294
+            \uCD1D."
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &294175986
 GameObject:
   m_ObjectHideFlags: 0
@@ -970,8 +1057,9 @@ GameObject:
   - component: {fileID: 610606166}
   - component: {fileID: 610606168}
   - component: {fileID: 610606167}
+  - component: {fileID: 610606169}
   m_Layer: 5
-  m_Name: Image
+  m_Name: BigGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1035,6 +1123,34 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 610606165}
   m_CullTransparentMesh: 1
+--- !u!114 &610606169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 610606165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbdbe901609b24b439bff6b7da327ab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1796885921}
+        m_TargetAssemblyTypeName: InventoryUI, Assembly-CSharp
+        m_MethodName: ShowText
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: "\uCD1D\uC744 \uCC28\uC9C0\uD558\uBA74 \uAC15\uB825\uD55C
+            \uCD1D\uC54C\uC744 \uBC1C\uC0AC\uD560 \uC218 \uC788\uB2E4."
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &880438134
 GameObject:
   m_ObjectHideFlags: 0
@@ -1392,6 +1508,7 @@ GameObject:
   - component: {fileID: 1008274160}
   - component: {fileID: 1008274162}
   - component: {fileID: 1008274161}
+  - component: {fileID: 1008274163}
   m_Layer: 5
   m_Name: RubberMarker
   m_TagString: Untagged
@@ -1461,6 +1578,34 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1008274159}
   m_CullTransparentMesh: 1
+--- !u!114 &1008274163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008274159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbdbe901609b24b439bff6b7da327ab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1796885921}
+        m_TargetAssemblyTypeName: InventoryUI, Assembly-CSharp
+        m_MethodName: ShowText
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: "\uBB3C\uCCB4\uB97C \uD295\uACA8\uB0BC \uC218 \uC788\uB294
+            \uB9C8\uCEE4."
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1011414973
 GameObject:
   m_ObjectHideFlags: 0
@@ -2285,6 +2430,7 @@ GameObject:
   - component: {fileID: 1796885918}
   - component: {fileID: 1796885919}
   - component: {fileID: 1796885920}
+  - component: {fileID: 1796885921}
   m_Layer: 5
   m_Name: PausePanel
   m_TagString: Untagged
@@ -2385,6 +2531,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1796885921}
+        m_TargetAssemblyTypeName: InventoryUI, Assembly-CSharp
+        m_MethodName: UpdateUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1796885920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2437,6 +2595,33 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1796885921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1796885914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13ca0343f1ede9a4594c4b5bd1d09f80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blackMarker: {fileID: 213041015}
+  gravityMarker: {fileID: 138248819}
+  rubberMarker: {fileID: 1008274159}
+  blackMarkerUpgrade1: {fileID: 2060551401}
+  blackMarkerUpgrade2: {fileID: 1507250341}
+  blackMarkerUpgrade3: {fileID: 2049758886}
+  gravityMarkerUpgrade1: {fileID: 1806699410}
+  gravityMarkerUpgrade2: {fileID: 1011414973}
+  gravityMarkerUpgrade3: {fileID: 1274780512}
+  rubberMarkerUpgrade1: {fileID: 302823683}
+  rubberMarkerUpgrade2: {fileID: 1011444639}
+  rubberMarkerUpgrade3: {fileID: 2109346012}
+  gun: {fileID: 234294739}
+  bigGun: {fileID: 610606165}
+  itemText: {fileID: 1006326400}
 --- !u!1 &1806699410
 GameObject:
   m_ObjectHideFlags: 0
