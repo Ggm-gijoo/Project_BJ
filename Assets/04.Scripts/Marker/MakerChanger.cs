@@ -21,20 +21,21 @@ namespace Marker
 
         private void Start()
 		{
-			ChangeDrawMarkerAddress(blackMarkerAddress, blackMarkerCursor);
+            //ChangeDrawMarkerAddress(blackMarkerAddress, blackMarkerCursor);
+            ChangeDrawMarkerAddress(MarkerType.None);
 		}
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Alpha1))
+            if (Input.GetKeyDown(KeyCode.Alpha1) && InventoryManager.Instance.inventoryData.isGetBlackMarker)
             {
 				ChangeDrawMarkerAddress(MarkerType.Black);
             }
-            if (Input.GetKeyDown(KeyCode.Alpha2))
+            if (Input.GetKeyDown(KeyCode.Alpha2) && InventoryManager.Instance.inventoryData.isGetGravityMarker)
             {
 				ChangeDrawMarkerAddress(MarkerType.Gravity);
             }
-            if (Input.GetKeyDown(KeyCode.Alpha3))
+            if (Input.GetKeyDown(KeyCode.Alpha3) && InventoryManager.Instance.inventoryData.isGetRubberMarker)
             {
 				ChangeDrawMarkerAddress(MarkerType.Rubber);
             }
@@ -44,7 +45,9 @@ namespace Marker
         {
             switch(markerType)
             {
-                case MarkerType.Black:
+                case MarkerType.None:
+                    break;
+				case MarkerType.Black:
                     ChangeDrawMarkerAddress(blackMarkerAddress, blackMarkerCursor);
 					break;
 				case MarkerType.Gravity:

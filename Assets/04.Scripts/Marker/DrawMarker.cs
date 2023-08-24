@@ -72,6 +72,10 @@ namespace Marker
 
 		private void Update()
         {
+			if(MarkerType == MarkerType.None)
+			{
+				return;
+			}
             if (inGameCam == null) 
             {
                 return;

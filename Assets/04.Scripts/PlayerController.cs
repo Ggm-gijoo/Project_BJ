@@ -91,6 +91,11 @@ public class PlayerController : MonoBehaviour
 
     public void Fire()
     {
+        if(!InventoryManager.Instance.inventoryData.isGetGun)
+        {
+            return;
+        }
+
         if (Input.GetMouseButton(1))
             fireTimer += Time.deltaTime;
 
@@ -109,10 +114,19 @@ public class PlayerController : MonoBehaviour
 	}
 
     private IProjectile GetBullet(Vector3 dir)
-    {
-		GameObject clone = fireTimer < 1f ?
-				ObjectPoolManager.Instance.GetObject(bullet, transform.position + dir * .75f, transform.rotation) :
-				ObjectPoolManager.Instance.GetObject(chargedBullet, transform.position + dir * 1f, transform.rotation);
+	{
+        GameObject clone = null;
+		if (InventoryManager.Instance.inventoryData.isGetBigGun)
+		{
+			clone = fireTimer < 1f ?
+					ObjectPoolManager.Instance.GetObject(bullet, transform.position + dir * .75f, transform.rotation) :
+					ObjectPoolManager.Instance.GetObject(chargedBullet, transform.position + dir * 1f, transform.rotation);
+		}
+        else
+		{
+            clone = ObjectPoolManager.Instance.GetObject(bullet, transform.position + dir * .75f, transform.rotation);
+
+		}
         return clone.GetComponent<IProjectile>();
 	}
 
