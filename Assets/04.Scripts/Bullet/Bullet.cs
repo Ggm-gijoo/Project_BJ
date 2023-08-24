@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour, IProjectile
 {
-	public string Key { get => "Bullet"; }
+	[SerializeField] private string keyValue;
+	public string Key { get => keyValue; }
 	private Rigidbody2D rigid;
 	[SerializeField]
 	private LayerMask colLayerMask;
@@ -13,8 +14,9 @@ public class Bullet : MonoBehaviour, IProjectile
 	private Coroutine poolCoroutine;
 
     private void OnEnable()
-    {
-		gameObject.tag = "Untagged";
+	{ 
+		if (Key == "Bullet")
+			gameObject.tag = "CanDestroy";
 	}
 
     public void PoolThisObject()

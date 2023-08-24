@@ -6,6 +6,8 @@ using UnityEngine;
 public class EnemyTest : MonoBehaviour
 {
     [SerializeField] private string bullet;
+    [SerializeField] private GameObject deathParticle;
+
     private Transform playerTransform;
     private void Awake()
     {
@@ -20,6 +22,16 @@ public class EnemyTest : MonoBehaviour
             GameObject bulletClone = ObjectPoolManager.Instance.GetObject(bullet, transform.position + dir * Vector3.right * 2f, Quaternion.identity);
             bulletClone.GetComponent<IProjectile>().StartMove(dir * Vector2.right * 5);
             yield return new WaitForSeconds(2f);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("CanDestroy") || collision.gameObject.CompareTag("CanTakeDmg"))
+        {
+            deathParticle.SetActive(true);
+            deathParticle.transform.SetParent(null);
+            Destroy(gameObject);
         }
     }
 }
