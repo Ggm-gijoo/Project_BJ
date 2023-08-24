@@ -28,6 +28,8 @@ namespace Map
 		public IconType iconType;
 		public Vector2 pos;
 		public string sceneName;
+		[Multiline(3)]
+		public string explanation;
 
 #if UNITY_EDITOR
 		public static MapDataSO CreateAsset(Vector2 pos)

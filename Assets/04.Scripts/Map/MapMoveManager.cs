@@ -21,6 +21,14 @@ namespace Map
 			Middle,
 		}
 
+		public Vector2 CurrentPos
+		{
+			get
+			{
+				return currentPos;
+			}
+		}
+
 		public MoveType CurrentMoveType => currentMoveType;
 
 		private Vector2 praviousePos;
