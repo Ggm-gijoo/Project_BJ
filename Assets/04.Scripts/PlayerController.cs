@@ -48,6 +48,11 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (!isDie && isCanMove && Input.GetMouseButtonDown(0))
+            isCanMove = false;
+        if (!isDie && !isCanMove && Input.GetMouseButtonUp(0))
+            isCanMove = true;
+
         if (isCanMove)
         {
             Move();
