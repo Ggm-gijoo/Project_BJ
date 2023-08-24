@@ -804,6 +804,7 @@ MonoBehaviour:
   blackMarkerCursor: {fileID: 2800000, guid: 0457ea72e1c31ef458c6452de935e941, type: 3}
   gravityMarkerCursor: {fileID: 2800000, guid: 4a9d13febbb598e478d29b867783525b, type: 3}
   rubberMarkerCursor: {fileID: 2800000, guid: ac2808828d28aa246bb9d068d4d83d62, type: 3}
+  event_ChangeMarker: {fileID: 11400000, guid: 49bbd49903270f241b2d138905ac400a, type: 2}
 --- !u!1001 &450158387
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6431,6 +6432,7 @@ MonoBehaviour:
   blackMaxGauge: 100
   gravityMaxGauge: 100
   rubberMaxGauge: 100
+  event_UseMarker: {fileID: 11400000, guid: 5b243211b36496f4f8298e8c4c947c27, type: 2}
 --- !u!114 &1415703805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6647,11 +6649,11 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60.000004
+  near clip plane: 0.1
+  far clip plane: 5000
+  field of view: 60
   orthographic: 0
-  orthographic size: 5
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -6675,7 +6677,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1460153177}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: -0.14, y: 1, z: -10.12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7112,7 +7114,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh79334
+  m_Name: pb_Mesh31678
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2

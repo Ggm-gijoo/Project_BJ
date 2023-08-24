@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     private BoxCollider2D col;
 
     private Animator anim;
-    private ParticleSystem deathParticle;
+	[SerializeField] private GameObject deathParticle;
     private SpriteRenderer sprite;
 
     [SerializeField]
@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpPower;
     [SerializeField] private float fallMultiplier;
     [SerializeField] private SpriteRenderer eye;
-    private Vector2 moveVelocity;
+	private Vector2 moveVelocity;
     private float maxMoveVelocity;
 
     private float fireTimer = 0f;
@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
 
-        deathParticle = GetComponentInChildren<ParticleSystem>();
+        //deathParticle = GetComponentInChildren<ParticleSystem>();
 
         sprite.color = new Color(1, 1, 1, 1);
         eye.color = sprite.color;
@@ -125,8 +125,8 @@ public class PlayerController : MonoBehaviour
     private IEnumerator OnDie()
     {
         isCanMove = false;
-        deathParticle.transform.SetParent(null);
-        deathParticle.Play();
+		deathParticle.gameObject.SetActive(true);
+		deathParticle.transform.SetParent(null);
         sprite.color = new Color(1, 1, 1, 0);
         eye.color = sprite.color;
         yield return new WaitForSeconds(0.5f);

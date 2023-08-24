@@ -9,7 +9,13 @@ namespace Marker
     {
         [SerializeField] private float multiply = 1f;
         private float maxBounceForce = 500f; // 최대 튕김 힘
-		public new string Key => "RubberMarker";
+		public override string Key
+		{
+			get
+			{
+				return "RubberMarker";
+			}
+		}
 
 		private void OnCollisionEnter2D(Collision2D collision)
         {

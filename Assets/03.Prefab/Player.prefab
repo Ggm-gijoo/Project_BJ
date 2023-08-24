@@ -273,6 +273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b2ce770e04572243bf7f42d9873133e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathParticle: {fileID: 9168749614420547145}
   ingameCam: {fileID: 0}
   bullet: Bullet
   chargedBullet: ChargeBullet
@@ -291,6 +292,14 @@ PrefabInstance:
     - target: {fileID: 3084525582806072847, guid: bb8c54375d5c8a747998b4d3b6e28725, type: 3}
       propertyPath: m_Name
       value: DeathParticle
+      objectReference: {fileID: 0}
+    - target: {fileID: 3084525582806072847, guid: bb8c54375d5c8a747998b4d3b6e28725, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3614114183287391392, guid: bb8c54375d5c8a747998b4d3b6e28725, type: 3}
+      propertyPath: playOnAwake
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5536205438997971761, guid: bb8c54375d5c8a747998b4d3b6e28725, type: 3}
       propertyPath: m_RootOrder
@@ -344,5 +353,10 @@ PrefabInstance:
 --- !u!4 &1812438391233751927 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5536205438997971761, guid: bb8c54375d5c8a747998b4d3b6e28725, type: 3}
+  m_PrefabInstance: {fileID: 6193468318130366534}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &9168749614420547145 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3084525582806072847, guid: bb8c54375d5c8a747998b4d3b6e28725, type: 3}
   m_PrefabInstance: {fileID: 6193468318130366534}
   m_PrefabAsset: {fileID: 0}

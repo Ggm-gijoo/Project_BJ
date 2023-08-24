@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utill.Pattern;
 
 namespace Marker
 {
@@ -14,7 +15,7 @@ namespace Marker
         Rubber
     }
 
-    public class DrawMarker : MonoBehaviour
+    public class DrawMarker : MonoSingleton<DrawMarker>
     {
         public string LineAddress
         {
@@ -50,6 +51,13 @@ namespace Marker
         private Camera inGameCam;
 		private MarkerType markerType;
 
+		public float BlackGauge => blackGauge;
+		public float GravityGauge => gravityGauge;
+		public float RubberGauge => rubberGauge;
+		public float BlackMaxGauge => blackMaxGauge;
+		public float GravityMaxGauge => gravityMaxGauge;
+		public float RubberMaxGauge => rubberMaxGauge;
+
 
 		private float blackGauge = 10f;
 		[SerializeField] private float blackMaxGauge = 10f;
@@ -59,6 +67,8 @@ namespace Marker
 		[SerializeField] private float rubberMaxGauge = 10f;
 
         private float praviouseGauge;
+
+		[SerializeField] private EventSO event_UseMarker;
 
 		private void Update()
         {
@@ -154,6 +164,8 @@ namespace Marker
 			blackGauge = blackMaxGauge;
 			gravityGauge = gravityMaxGauge;
 			rubberGauge = rubberMaxGauge;
+
+			event_UseMarker.Raise();
 		}
 
         public void AddGauge(MarkerType markerType, float gauge)
@@ -183,7 +195,9 @@ namespace Marker
 					}
 					break;
 			}
-        }
+
+			event_UseMarker.Raise();
+		}
 
         private float GetCurrentGauge()
         {
@@ -226,6 +240,8 @@ namespace Marker
 					}
 					break;
 			}
+
+			event_UseMarker.Raise();
 		}
 
         private bool CheckMousePosGround(Vector3 pos)
