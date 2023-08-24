@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ChargedBullet : MonoBehaviour, IProjectile
 {
-	public string Key { get => "Bullet"; }
+	public string Key { get => "ChargeBullet"; }
 	private Rigidbody2D rigid;
 	[SerializeField]
 	private LayerMask colLayerMask;
