@@ -119,15 +119,17 @@ public class PlayerController : MonoBehaviour
 		if (InventoryManager.Instance.inventoryData.isGetBigGun)
 		{
 			clone = fireTimer < 1f ?
-					ObjectPoolManager.Instance.GetObject(bullet, transform.position + dir * .75f, transform.rotation) :
-					ObjectPoolManager.Instance.GetObject(chargedBullet, transform.position + dir * 1f, transform.rotation);
+					ObjectPoolManager.Instance.GetObject(bullet, transform.position, transform.rotation) :
+					ObjectPoolManager.Instance.GetObject(chargedBullet, transform.position, transform.rotation);
 		}
         else
 		{
             clone = ObjectPoolManager.Instance.GetObject(bullet, transform.position + dir * .75f, transform.rotation);
 
 		}
-        return clone.GetComponent<IProjectile>();
+        clone.tag = "PlayerWeapon";
+
+		return clone.GetComponent<IProjectile>();
 	}
 
 	public void GroundCheck()
@@ -154,11 +156,19 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.transform.CompareTag("CanTakeDmg") && !isDie)
+        if ((collision.transform.CompareTag("CanTakeDmg") || collision.transform.CompareTag("EnemyWeapon")) && !isDie)
         {
             isDie = true;
             StartCoroutine(OnDie());
         }
     }
 
+	private void OnTriggerEnter2D(Collider2D collision)
+	{
+		if ((collision.transform.CompareTag("CanTakeDmg") || collision.transform.CompareTag("EnemyWeapon")) && !isDie)
+		{
+			isDie = true;
+			StartCoroutine(OnDie());
+		}
+	}
 }

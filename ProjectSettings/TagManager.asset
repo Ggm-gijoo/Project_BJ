@@ -8,6 +8,8 @@ TagManager:
   - InGameCam
   - CanTakeDmg
   - CanDestroy
+  - PlayerWeapon
+  - EnemyWeapon
   layers:
   - Default
   - TransparentFX
@@ -22,7 +24,7 @@ TagManager:
   - Class
   - CameraOnly
   - Marker
-  - 
+  - Projectile
   - 
   - 
   - 

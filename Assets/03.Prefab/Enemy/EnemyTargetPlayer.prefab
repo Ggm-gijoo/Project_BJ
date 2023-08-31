@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 582091375808334919}
   - component: {fileID: 1794662372698578463}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: EnemyTargetPlayer
   m_TagString: CanTakeDmg
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -102,6 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: EnemyBullet
   deathParticle: {fileID: 5286558725423210719}
+  directionType: 1
 --- !u!50 &582091375808334919
 Rigidbody2D:
   serializedVersion: 4

@@ -5,6 +5,21 @@ using UnityEngine;
 
 public class ChargedBullet : MonoBehaviour, IProjectile
 {
+	public Vector3 Position
+	{
+		get
+		{
+			return transform.position;
+		}
+	}
+	public GameObject GameObject
+	{
+		get
+		{
+			return gameObject;
+		}
+	}
+
 	public string Key { get => "ChargeBullet"; }
 	private Rigidbody2D rigid;
 	[SerializeField]

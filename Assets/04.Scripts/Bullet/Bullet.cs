@@ -5,6 +5,21 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour, IProjectile
 {
+	public Vector3 Position
+	{
+		get
+		{
+			return transform.position;
+		}
+	}
+	public GameObject GameObject
+	{
+		get
+		{
+			return gameObject;
+		}
+	}
+
 	[SerializeField] private string keyValue;
 	public string Key { get => keyValue; }
 	private Rigidbody2D rigid;
@@ -15,8 +30,8 @@ public class Bullet : MonoBehaviour, IProjectile
 
     private void OnEnable()
 	{ 
-		if (Key == "Bullet")
-			gameObject.tag = "CanDestroy";
+		//if (Key == "Bullet")
+		//	gameObject.tag = "CanDestroy";
 	}
 
     public void PoolThisObject()
@@ -55,12 +70,13 @@ public class Bullet : MonoBehaviour, IProjectile
 		}
 	}
 
-	private void OnCollisionEnter2D(Collision2D collision)
+	private void OnTriggerEnter2D(Collider2D collision)
     {
 		IHitFromBullet hitFromBullet = null;
-		if(collision.gameObject.TryGetComponent<IHitFromBullet>(out hitFromBullet))
+			
+		if(collision.transform.root.gameObject.TryGetComponent<IHitFromBullet>(out hitFromBullet))
 		{
-			collision.gameObject.GetComponent<IHitFromBullet>().Hit(1, this);
+			collision.transform.root.gameObject.GetComponent<IHitFromBullet>().Hit(1, this);
 			gameObject.tag = "CanTakeDmg";
 		}
 		else if ((colLayerMask.value & (1 << collision.transform.gameObject.layer)) > 0)

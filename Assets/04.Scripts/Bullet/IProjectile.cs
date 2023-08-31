@@ -4,6 +4,14 @@ using UnityEngine;
 
 public interface IProjectile : IPool
 {
+	public Vector3 Position
+	{
+		get;
+	}
+	public GameObject GameObject
+	{
+		get;
+	}
 
 	public void StartMove();
 	public void StartMove(Vector3 power);

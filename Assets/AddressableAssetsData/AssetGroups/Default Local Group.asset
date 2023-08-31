@@ -62,6 +62,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4792b8f75b137674b9a3ca25380a1073
+    m_Address: DestroyMarkerEffect
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 9e56a3d0fbca01c459837fc2a6d5b6a2, type: 2}
   m_SchemaSet:

@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using DG.Tweening;
 using Pool;
+using Effect;
 
 namespace Marker
 {
@@ -31,12 +32,12 @@ namespace Marker
 			}
 		}
 
-		[SerializeField] private MarkerType markerType;
-		[SerializeField] private LineRenderer lineRenderer;
-        [SerializeField] private PolygonCollider2D polygonCollider2D;
-		[SerializeField] private MarkerPolyCollider markerPolyCollider;
-		[SerializeField] private Material originMaterial;
-		[SerializeField] private Material hitMaterial;
+		[SerializeField] protected MarkerType markerType;
+		[SerializeField] protected LineRenderer lineRenderer;
+        [SerializeField] protected PolygonCollider2D polygonCollider2D;
+		[SerializeField] protected MarkerPolyCollider markerPolyCollider;
+		[SerializeField] protected Material originMaterial;
+		[SerializeField] protected Material hitMaterial;
 		protected bool isDrawComplete;
 		protected int hp;
 		protected float gauge = 0f;
@@ -104,6 +105,7 @@ namespace Marker
 			if (hp <= 0)
 			{
 				MarkerManager.Instance.drawMarker.AddGauge(markerType, gauge);
+				EffectManager.Instance.SetEffectDefault("DestroyMarkerEffect", projectile.Position, Quaternion.identity);
 				PoolThisObject();
 			}
 			else

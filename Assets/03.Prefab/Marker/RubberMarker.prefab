@@ -81,6 +81,7 @@ MonoBehaviour:
   markerPolyCollider: {fileID: 3069569794278302476}
   originMaterial: {fileID: 2100000, guid: f163b1034224ea34aa812f4a850f39cb, type: 2}
   hitMaterial: {fileID: 2100000, guid: 16254349e7d0604459f374bc4411c517, type: 2}
+  collider: {fileID: 8330215393830623358}
   multiply: 1.07
 --- !u!114 &2142788212747005231
 MonoBehaviour:
