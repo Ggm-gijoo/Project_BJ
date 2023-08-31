@@ -13,6 +13,7 @@ public class EnemyTest : MonoBehaviour
 {
     [SerializeField] private string bullet;
     [SerializeField] private float bulletSpeed = 5f;
+    [SerializeField] private float bulletDelay = 2f;
     [SerializeField] private GameObject deathParticle;
     [SerializeField] DirectionType directionType;
 
@@ -47,7 +48,7 @@ public class EnemyTest : MonoBehaviour
             {
 
             }
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(bulletDelay);
         }
     }
 
