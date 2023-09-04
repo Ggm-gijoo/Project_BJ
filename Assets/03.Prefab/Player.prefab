@@ -281,6 +281,9 @@ MonoBehaviour:
   jumpPower: 5
   fallMultiplier: 2.5
   eye: {fileID: 760005748046485783}
+  groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 4352
 --- !u!1001 &6193468318130366534
 PrefabInstance:
   m_ObjectHideFlags: 0
