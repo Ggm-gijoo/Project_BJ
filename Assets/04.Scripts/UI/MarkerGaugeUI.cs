@@ -15,6 +15,13 @@ namespace UI
 		[SerializeField]
 		private Image fillColorImage;
 
+		[SerializeField]
+		private MarkerImage markerImageBlack;
+		[SerializeField]
+		private MarkerImage markerImageGravity;
+		[SerializeField]
+		private MarkerImage markerImageRubber;
+
 		public void UpdateUseMarkerUI()
 		{
 			var drawMaker = MarkerManager.Instance.drawMarker;
@@ -27,12 +34,15 @@ namespace UI
 					break;
 				case MarkerType.Black:
 					value = drawMaker.BlackGauge / drawMaker.BlackMaxGauge;
+					markerImageBlack.UpdateUseMarkerUI();
 					break;
 				case MarkerType.Gravity:
 					value = drawMaker.GravityGauge / drawMaker.GravityMaxGauge;
+					markerImageGravity.UpdateUseMarkerUI();
 					break;
 				case MarkerType.Rubber:
 					value = drawMaker.RubberGauge / drawMaker.RubberMaxGauge;
+					markerImageRubber.UpdateUseMarkerUI();
 					break;
 			}
 			Vector2 newPos = fillColorImage.rectTransform.anchoredPosition;
@@ -63,7 +73,6 @@ namespace UI
 					markerObj.SetActive(true);
 					outLine.effectColor = new Color(0f, 0.54f, 0.62f);
 					fillColorImage.color = new Color(0f, 0.35f, 0.4f);
-
 					break;
 			}
 		}
