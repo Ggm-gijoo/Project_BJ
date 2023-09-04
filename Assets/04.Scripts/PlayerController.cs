@@ -7,6 +7,8 @@ using Map;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController instance;
+
     private Rigidbody2D rigid;
     private BoxCollider2D col;
 
@@ -30,6 +32,8 @@ public class PlayerController : MonoBehaviour
 	private Vector2 moveVelocity;
     private float maxMoveVelocity;
 
+    public bool IsCanJump => isCanJump;
+
     private float fireTimer = 0f;
     private bool isCanMove = true;
     private bool isCanJump = true;
@@ -47,16 +51,26 @@ public class PlayerController : MonoBehaviour
         sprite.color = new Color(1, 1, 1, 1);
         eye.color = sprite.color;
         isDie = false;
-    }
 
+        instance = this;
+	}
+    //
     private void Update()
     {
-        if (!isDie && isCanMove && Input.GetMouseButtonDown(0))
+        if(isDie)
+        {
             isCanMove = false;
-        if (!isDie && !isCanMove && Input.GetMouseButtonUp(0))
-            isCanMove = true;
+		}
+        else
+        {
+            isCanMove = !Marker.MarkerManager.Instance.drawMarker.IsDrawing;
+        }
 
-        if (isCanMove)
+        if(!isCanMove)
+        {
+            return;
+        }
+        else
         {
             Move();
             Jump();
@@ -82,7 +96,7 @@ public class PlayerController : MonoBehaviour
 
     public void Jump()
     {
-        if (rigid == null || !isCanJump) return;
+		if (rigid == null || !isCanJump) return;
 
         if(Input.GetKeyDown(KeyCode.Space))
         {
@@ -128,7 +142,6 @@ public class PlayerController : MonoBehaviour
         else
 		{
             clone = ObjectPoolManager.Instance.GetObject(bullet, transform.position + dir * .75f, transform.rotation);
-
 		}
         clone.tag = "PlayerWeapon";
 

@@ -70,6 +70,13 @@ namespace Marker
 
 		[SerializeField] private EventSO event_UseMarker;
 
+		private PlayerController playerController;
+
+		public bool IsDrawing => isDrawing;
+		private bool isDrawing;
+
+		[SerializeField] private GameObject drawVolume;
+
 		private void Update()
         {
 			if(MarkerType == MarkerType.None)
@@ -80,6 +87,14 @@ namespace Marker
             {
                 return;
             }
+			if (playerController == null)
+			{
+				return;
+			}
+			if(!playerController.IsCanJump)
+			{
+				return;
+			}
             mousePos = Input.mousePosition;
             mousePos.z = 10;
 			if (Input.GetMouseButtonDown(0))
@@ -87,6 +102,8 @@ namespace Marker
 				praviouseGauge = GetCurrentGauge();
 				CreateLine();
                 currentMarker?.OnBeginDraw();
+				isDrawing = true;
+				drawVolume.SetActive(true);
 			}
 
 			if (Input.GetMouseButton(0))
@@ -131,7 +148,9 @@ namespace Marker
 					currentMarker.OnEndDraw();
 					currentMarker = null;
 				}
-            }
+				isDrawing = false;
+				drawVolume.SetActive(false);
+			}
         }
 
         private void CreateLine()
@@ -161,6 +180,7 @@ namespace Marker
         public void ResetCamera()
         {
             inGameCam = InGameCam.instance.GetComponent<Camera>();
+			playerController = PlayerController.instance;
 		}
 
         public void ResetGauge()
