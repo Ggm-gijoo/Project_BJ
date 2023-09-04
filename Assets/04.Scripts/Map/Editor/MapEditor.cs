@@ -8,6 +8,7 @@ using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;
 using UnityEditor.UI;
 using UnityEditor.Compilation;
+using System;
 
 namespace Map
 {
@@ -161,6 +162,7 @@ namespace Map
 						//SO 생성 및 SO 정보 표시
 						var so = MapDataSO.CreateAsset(pos);
 						allMapDataSO.AddMapDataSO(pos, so);
+						EditorUtility.SetDirty(allMapDataSO);
 						AssetDatabase.SaveAssets();
 						Selection.activeObject = so;
 						AssetDatabase.Refresh();

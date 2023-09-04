@@ -84,11 +84,11 @@ namespace Map
 					currentMoveType = moveType;
 					break;
 				case MoveType.Up:
-					currentPos.y += -1;
+					currentPos.y += 1;
 					currentMoveType = moveType;
 					break;
 				case MoveType.Down:
-					currentPos.y += 1;
+					currentPos.y += -1;
 					currentMoveType = moveType;
 					break;
 				case MoveType.Middle:
