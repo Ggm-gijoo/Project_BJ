@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using DG.Tweening;
 
 public class MiniMapActivor : MonoBehaviour
 {
@@ -30,12 +31,15 @@ public class MiniMapActivor : MonoBehaviour
     {
         openEvent?.Invoke();
 		mapObj.SetActive(true);
+        mapObj.transform.DOKill();
+		mapObj.transform.DOLocalMoveX(3.4f, 1f);
 		isOpen = true;
 	}
 
     private void CloseMap()
 	{
-		mapObj.SetActive(false);
+		mapObj.transform.DOKill();
+		mapObj.transform.DOLocalMoveX(12f, 1f).OnComplete(() => mapObj.SetActive(false));
 		isOpen = false;
 	}
 }

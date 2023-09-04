@@ -7,6 +7,8 @@ using Map;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController instance;
+
     private Rigidbody2D rigid;
     private BoxCollider2D col;
 
@@ -24,8 +26,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpPower;
     [SerializeField] private float fallMultiplier;
     [SerializeField] private SpriteRenderer eye;
+    [SerializeField] private GameObject chargedBody;
+
+    [SerializeField] private LayerMask groundLayerMask;
+
 	private Vector2 moveVelocity;
     private float maxMoveVelocity;
+
+    public bool IsCanJump => isCanJump;
 
     private float fireTimer = 0f;
     private bool isCanMove = true;
@@ -44,16 +52,26 @@ public class PlayerController : MonoBehaviour
         sprite.color = new Color(1, 1, 1, 1);
         eye.color = sprite.color;
         isDie = false;
-    }
 
+        instance = this;
+	}
+    //
     private void Update()
     {
-        if (!isDie && isCanMove && Input.GetMouseButtonDown(0))
+        if(isDie)
+        {
             isCanMove = false;
-        if (!isDie && !isCanMove && Input.GetMouseButtonUp(0))
-            isCanMove = true;
+		}
+        else
+        {
+            isCanMove = !Marker.MarkerManager.Instance.drawMarker.IsDrawing;
+        }
 
-        if (isCanMove)
+        if(!isCanMove)
+        {
+            return;
+        }
+        else
         {
             Move();
             Jump();
@@ -79,7 +97,7 @@ public class PlayerController : MonoBehaviour
 
     public void Jump()
     {
-        if (rigid == null || !isCanJump) return;
+		if (rigid == null || !isCanJump) return;
 
         if(Input.GetKeyDown(KeyCode.Space))
         {
@@ -94,18 +112,28 @@ public class PlayerController : MonoBehaviour
         if(!InventoryManager.Instance.inventoryData.isGetGun)
         {
             return;
-        }
+		}
 
-        if (Input.GetMouseButton(1))
-            fireTimer += Time.deltaTime;
+		if (InventoryManager.Instance.inventoryData.isGetBigGun && fireTimer >= 1f)
+		{
+			chargedBody.SetActive(true);
+		}
+		else
+		{
+			chargedBody.SetActive(false);
+		}
 
-        else if (Input.GetMouseButtonUp(1))
+		if (Input.GetMouseButton(1))
         {
+            fireTimer += Time.deltaTime;
+		}
+		else if (Input.GetMouseButtonUp(1))
+		{
 			Vector3 dir = GetDirection();
 			GetBullet(dir).StartMove(dir * 5);
-            fireTimer = 0f;
-        }
-    }
+			fireTimer = 0f;
+		}
+	}
 
     private Vector3 GetDirection()
 	{
@@ -125,7 +153,6 @@ public class PlayerController : MonoBehaviour
         else
 		{
             clone = ObjectPoolManager.Instance.GetObject(bullet, transform.position + dir * .75f, transform.rotation);
-
 		}
         clone.tag = "PlayerWeapon";
 
@@ -136,7 +163,7 @@ public class PlayerController : MonoBehaviour
     {
         if (rigid.velocity.y > 0 || isCanJump) return;
 
-        var hit = Physics2D.BoxCast(transform.position, Vector2.one, 0, Vector2.down, 0.1f, 1 << 8);
+        var hit = Physics2D.BoxCast(transform.position + (Vector3.down * 0.05f), Vector2.one, 0, Vector2.down, 0.1f, groundLayerMask);
         if (hit.collider != null)
         {
             isCanJump = true;

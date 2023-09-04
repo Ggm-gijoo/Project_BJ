@@ -65,24 +65,34 @@ public class Item : MonoBehaviour
 				InventoryManager.Instance.inventoryData.isGetRubberMarker = true;
 				break;
 			case ItemType.BlackMarkerOne:
+				InventoryManager.Instance.inventoryData.isGetUpgradeBlack1 = true;
 				break;
 			case ItemType.BlackMarkerTwo:
+				InventoryManager.Instance.inventoryData.isGetUpgradeBlack2 = true;
 				break;
 			case ItemType.BlackMarkerThree:
+				InventoryManager.Instance.inventoryData.isGetUpgradeBlack3 = true;
 				break;
 			case ItemType.GravityMarkerOne:
+				InventoryManager.Instance.inventoryData.isGetUpgradeGravity1 = true;
 				break;
 			case ItemType.GravityMarkerTwo:
+				InventoryManager.Instance.inventoryData.isGetUpgradeGravity2 = true;
 				break;
 			case ItemType.GravityMarkerThree:
+				InventoryManager.Instance.inventoryData.isGetUpgradeGravity3 = true;
 				break;
 			case ItemType.RubberMarkerOne:
+				InventoryManager.Instance.inventoryData.isGetUpgradeRubber1 = true;
 				break;
 			case ItemType.RubberMarkerTwo:
+				InventoryManager.Instance.inventoryData.isGetUpgradeRubber2 = true;
 				break;
 			case ItemType.RubberMarkerThree:
+				InventoryManager.Instance.inventoryData.isGetUpgradeRubber3 = true;
 				break;
 		}
+		GameEventManager.Instance.GetGameEvent("7.GetItem").Raise();
 	}
 
 	private bool Check()
@@ -102,23 +112,23 @@ public class Item : MonoBehaviour
 			case ItemType.RubberMarker:
 				return InventoryManager.Instance.inventoryData.isGetRubberMarker;
 			case ItemType.BlackMarkerOne:
-				return false;
+				return InventoryManager.Instance.inventoryData.isGetUpgradeBlack1;
 			case ItemType.BlackMarkerTwo:
-				return false;
+				return InventoryManager.Instance.inventoryData.isGetUpgradeBlack2;
 			case ItemType.BlackMarkerThree:
-				return false;
+				return InventoryManager.Instance.inventoryData.isGetUpgradeBlack3;
 			case ItemType.GravityMarkerOne:
-				return false;
+				return InventoryManager.Instance.inventoryData.isGetUpgradeGravity1;
 			case ItemType.GravityMarkerTwo:
-				return false;
+				return InventoryManager.Instance.inventoryData.isGetUpgradeGravity2;
 			case ItemType.GravityMarkerThree:
-				return false;
+				return InventoryManager.Instance.inventoryData.isGetUpgradeGravity3;
 			case ItemType.RubberMarkerOne:
-				return false;
+				return InventoryManager.Instance.inventoryData.isGetUpgradeRubber1;
 			case ItemType.RubberMarkerTwo:
-				return false;
+				return InventoryManager.Instance.inventoryData.isGetUpgradeRubber2;
 			case ItemType.RubberMarkerThree:
-				return false;
+				return InventoryManager.Instance.inventoryData.isGetUpgradeRubber3;
 
 		}
 		return false;
