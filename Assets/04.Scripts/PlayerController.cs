@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpPower;
     [SerializeField] private float fallMultiplier;
     [SerializeField] private SpriteRenderer eye;
+    [SerializeField] private GameObject chargedBody;
 
     [SerializeField] private LayerMask groundLayerMask;
 
@@ -111,18 +112,28 @@ public class PlayerController : MonoBehaviour
         if(!InventoryManager.Instance.inventoryData.isGetGun)
         {
             return;
-        }
+		}
 
-        if (Input.GetMouseButton(1))
-            fireTimer += Time.deltaTime;
+		if (InventoryManager.Instance.inventoryData.isGetBigGun && fireTimer >= 1f)
+		{
+			chargedBody.SetActive(true);
+		}
+		else
+		{
+			chargedBody.SetActive(false);
+		}
 
-        else if (Input.GetMouseButtonUp(1))
+		if (Input.GetMouseButton(1))
         {
+            fireTimer += Time.deltaTime;
+		}
+		else if (Input.GetMouseButtonUp(1))
+		{
 			Vector3 dir = GetDirection();
 			GetBullet(dir).StartMove(dir * 5);
-            fireTimer = 0f;
-        }
-    }
+			fireTimer = 0f;
+		}
+	}
 
     private Vector3 GetDirection()
 	{
