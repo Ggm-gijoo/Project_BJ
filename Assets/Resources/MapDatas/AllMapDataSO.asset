@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55d47f9809ff4284cb97820de606ed54, type: 3}
   m_Name: AllMapDataSO
   m_EditorClassIdentifier: 
-  gridSize: {x: 11, y: 11}
+  gridSize: {x: 11, y: 15}
   mapDataDic:
     _serializedList:
     - Key: {x: 0, y: 0}
