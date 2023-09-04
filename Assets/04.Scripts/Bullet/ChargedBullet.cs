@@ -63,16 +63,19 @@ public class ChargedBullet : MonoBehaviour, IProjectile
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Marker"))
-        {
-            collision.GetComponent<IHitFromBullet>().Hit(10, this);
-        }
-		else if((colLayerMask.value & (1 << collision.transform.gameObject.layer)) > 0)
+	{
+		IHitFromBullet hitFromBullet = null;
+
+		if (collision.transform.root.gameObject.TryGetComponent<IHitFromBullet>(out hitFromBullet))
 		{
-			PoolThisObject();
+			collision.transform.root.gameObject.GetComponent<IHitFromBullet>().Hit(10, this);
+			gameObject.tag = "CanTakeDmg";
 		}
-    }
+		//else if ((colLayerMask.value & (1 << collision.transform.gameObject.layer)) > 0)
+		//{
+		//	PoolThisObject();
+		//}
+	}
 
 	public void CollitionImplement()
 	{
