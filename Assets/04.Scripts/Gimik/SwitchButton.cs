@@ -68,16 +68,19 @@ public class SwitchButton : MonoBehaviour
 				{
 					isOn = false;
 					InitSprite();
+					offEvent?.Invoke();
 				}
 				else
 				{
 					isOn = true;
 					ChangeSprite();
+					onEvent?.Invoke();
 				}
 				break;
 			case SwitchType.OnlyOne:
 				isOn = true;
 				ChangeSprite();
+				onEvent?.Invoke();
 				break;
 		}
 	}
