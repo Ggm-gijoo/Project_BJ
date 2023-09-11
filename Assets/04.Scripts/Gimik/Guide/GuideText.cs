@@ -8,11 +8,18 @@ public class GuideText : MonoBehaviour
 {
 	[SerializeField] private TextMeshPro text;
 	[SerializeField] private bool isFadeInWithStart;
+	[SerializeField] private SpriteRenderer guideSpriteRenderer;
 
 	public void Start()
 	{
 		text.alpha = 0f;
-		if(isFadeInWithStart)
+		if (guideSpriteRenderer != null)
+		{
+			Color color = guideSpriteRenderer.color;
+			color.a = 0f;
+			guideSpriteRenderer.color = color;
+		}
+		if (isFadeInWithStart)
 		{
 			FadeIn();
 		}
@@ -20,6 +27,10 @@ public class GuideText : MonoBehaviour
 
 	public void FadeIn()
 	{
+		if(guideSpriteRenderer != null)
+		{
+			guideSpriteRenderer.DOFade(1f, 1f);
+		}
 		text.DOFade(1f, 1f);
 	}
 }
