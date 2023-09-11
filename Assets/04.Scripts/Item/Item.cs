@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public enum ItemType
 {
@@ -25,6 +26,8 @@ public class Item : MonoBehaviour
 {
 	[SerializeField]
 	private ItemType itemType;
+
+	public UnityEvent getEvent;
 
 	public void Start()
 	{
@@ -93,6 +96,7 @@ public class Item : MonoBehaviour
 				break;
 		}
 		GameEventManager.Instance.GetGameEvent("7.GetItem").Raise();
+		getEvent?.Invoke();
 	}
 
 	private bool Check()

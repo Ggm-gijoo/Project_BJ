@@ -5,7 +5,7 @@ using Pool;
 using UnityEngine.SceneManagement;
 using Map;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IGravity
 {
     public static PlayerController instance;
 
@@ -34,11 +34,20 @@ public class PlayerController : MonoBehaviour
     private float maxMoveVelocity;
 
     public bool IsCanJump => isCanJump;
+    private Vector3 gravityDir = new Vector3(0,-9.81f,0);
+	public Vector3 GravityDir 
+    {
+        get => gravityDir; 
+        set => gravityDir = value; 
+    }
 
-    private float fireTimer = 0f;
+	private float fireTimer = 0f;
     private bool isCanMove = true;
     private bool isCanJump = true;
     private bool isDie = false;
+
+    private float moveInput;
+    private bool jumpInput;
 
     private void Awake()
     {
@@ -58,7 +67,10 @@ public class PlayerController : MonoBehaviour
     //
     private void Update()
     {
-        if(isDie)
+        moveInput = Input.GetAxisRaw("Horizontal");
+        jumpInput = Input.GetKeyDown(KeyCode.Space);
+
+        if (isDie)
         {
             isCanMove = false;
 		}
@@ -73,19 +85,36 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            Move();
             Jump();
             Fire();
         }
-        GroundCheck();
     }
 
-    public void Move()
+	private void FixedUpdate()
+    {
+        Gravity();
+        GroundCheck();
+        if (!isCanMove)
+        {
+            return;
+        }
+        else
+        {
+            Move();
+        }
+    }
+
+    private void Gravity()
+	{
+        rigid.AddForce(GravityDir);
+	}
+
+
+	public void Move()
     {
         if (rigid == null) return;
 
-        float dirH = Input.GetAxisRaw("Horizontal");
-        moveVelocity = Vector2.right * dirH * speed;
+        moveVelocity = Vector2.right * moveInput * speed;
 
         //rigid.velocity = moveVelocity + Vector2.right * rigid.velocity.x + Vector2.up * rigid.velocity.y;
 
@@ -99,11 +128,11 @@ public class PlayerController : MonoBehaviour
     {
 		if (rigid == null || !isCanJump) return;
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(jumpInput)
         {
             isCanJump = false;
             rigid.velocity = new Vector2(rigid.velocity.x, 0);
-            rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+            rigid.AddForce(-GravityDir.normalized * jumpPower, ForceMode2D.Impulse);
         }
     }
 

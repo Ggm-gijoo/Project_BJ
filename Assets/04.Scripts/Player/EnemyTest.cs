@@ -9,19 +9,38 @@ public enum DirectionType
     Targetted
 }
 
-public class EnemyTest : MonoBehaviour
+public class EnemyTest : MonoBehaviour, IGravity
 {
     [SerializeField] private string bullet;
     [SerializeField] private float bulletSpeed = 5f;
     [SerializeField] private float bulletDelay = 2f;
     [SerializeField] private GameObject deathParticle;
     [SerializeField] DirectionType directionType;
+    [SerializeField] Rigidbody2D rigid;
 
     private Transform playerTransform;
+
+    private Vector3 gravityDir = new Vector3(0, -9.81f, 0);
+    public Vector3 GravityDir
+    {
+        get => gravityDir;
+        set => gravityDir = value;
+    }
+
     private void Awake()
     {
         playerTransform = FindObjectOfType<PlayerController>().transform;
         StartCoroutine(Fire());
+        rigid ??= GetComponentInChildren<Rigidbody2D>();
+    }
+	private void FixedUpdate()
+	{
+        Gravity();
+	}
+
+	private void Gravity()
+    {
+        rigid.AddForce(GravityDir);
     }
     public IEnumerator Fire()
     {
