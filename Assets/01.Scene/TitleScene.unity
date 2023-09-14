@@ -686,6 +686,10 @@ MonoBehaviour:
   gravityMarkerAddress: GravityMarker
   rubberMarkerAddress: RubberMarker
   drawMarker: {fileID: 1768154341}
+  blackMarkerCursor: {fileID: 0}
+  gravityMarkerCursor: {fileID: 0}
+  rubberMarkerCursor: {fileID: 0}
+  event_ChangeMarker: {fileID: 0}
 --- !u!4 &189120993
 Transform:
   m_ObjectHideFlags: 0
@@ -802,7 +806,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &245780348
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13109,6 +13113,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lineaddress: 
   currentLine: {fileID: 0}
+  cantTouchLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  blackMaxGauge: 10
+  gravityMaxGauge: 10
+  rubberMaxGauge: 10
+  event_UseMarker: {fileID: 0}
+  drawVolume: {fileID: 0}
 --- !u!4 &1768154342
 Transform:
   m_ObjectHideFlags: 0

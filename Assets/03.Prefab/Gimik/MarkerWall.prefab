@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 389166592099809604}
   - component: {fileID: 3734271555427059883}
   - component: {fileID: 8360011299907748468}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MarkerWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
