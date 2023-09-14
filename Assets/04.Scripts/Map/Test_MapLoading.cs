@@ -11,7 +11,13 @@ public class Test_MapLoading : MonoBehaviour
     [SerializeField]
     private string currentMapName;
 
-    [ContextMenu("LoadMap")]
+	private void Start()
+	{
+        LoadMap();
+
+    }
+
+	[ContextMenu("LoadMap")]
     public void LoadMap()
     {   
         StartCoroutine(LoadingScene());
