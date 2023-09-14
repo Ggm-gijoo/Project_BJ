@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Effect;
 
 public enum ItemType
 {
@@ -96,6 +97,7 @@ public class Item : MonoBehaviour
 				break;
 		}
 		GameEventManager.Instance.GetGameEvent("7.GetItem").Raise();
+		EffectManager.Instance.SetEffectDefault("GetItemEffect", transform.position, Quaternion.identity);
 		getEvent?.Invoke();
 	}
 
