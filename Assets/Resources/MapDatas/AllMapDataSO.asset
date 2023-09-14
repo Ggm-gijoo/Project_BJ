@@ -31,5 +31,7 @@ MonoBehaviour:
       Value: {fileID: 11400000, guid: c3946f69dabbd184ba614baf8a5556f8, type: 2}
     - Key: {x: -1, y: -1}
       Value: {fileID: 11400000, guid: f7fa64173763ea340a41c075d4f1718d, type: 2}
+    - Key: {x: 0, y: -1}
+      Value: {fileID: 11400000, guid: f4eb66dddfe744641b31be7df7e64110, type: 2}
   editorAddMapDataSO: {x: 0, y: 0}
   editorMapDataSO: {fileID: 11400000, guid: 983acf213e5fa93448f4a1966d5c0a3f, type: 2}

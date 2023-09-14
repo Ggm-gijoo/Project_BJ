@@ -192,7 +192,7 @@ public class PlayerController : MonoBehaviour, IGravity
     {
         if (rigid.velocity.y > 0 || isCanJump) return;
 
-        var hit = Physics2D.BoxCast(transform.position + (Vector3.down * 0.05f), Vector2.one, 0, Vector2.down, 0.1f, groundLayerMask);
+        var hit = Physics2D.BoxCast(transform.position + (Vector3.down * 0.05f), new Vector2(0.5f,1f), 0, Vector2.down, 0.1f, groundLayerMask);
         if (hit.collider != null)
         {
             isCanJump = true;

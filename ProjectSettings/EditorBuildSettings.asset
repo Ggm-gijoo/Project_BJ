@@ -113,5 +113,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Resources/MapDatas/Scenes/Map(-1,-1).unity
     guid: 2c02a1e975209ba4884e7cf74a58ca68
+  - enabled: 1
+    path: Assets/Resources/MapDatas/Scenes/Map(0,-1).unity
+    guid: bac86e54355e44c408fe4db8e68620f2
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 721f5d5fd39319d4ea8ffe7dad2d315a, type: 2}
