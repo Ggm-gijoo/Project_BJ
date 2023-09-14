@@ -11,6 +11,15 @@ public enum DirectionType
 
 public class EnemyTest : MonoBehaviour, IGravity
 {
+    private Rigidbody2D Rigid
+	{
+        get
+        {
+            rigid ??= GetComponentInChildren<Rigidbody2D>();
+            return rigid;
+		}
+	}
+
     [SerializeField] private string bullet;
     [SerializeField] private float bulletSpeed = 5f;
     [SerializeField] private float bulletDelay = 2f;
@@ -40,7 +49,7 @@ public class EnemyTest : MonoBehaviour, IGravity
 
 	private void Gravity()
     {
-        rigid.AddForce(GravityDir);
+        Rigid.AddForce(GravityDir);
     }
     public IEnumerator Fire()
     {

@@ -106,6 +106,7 @@ MonoBehaviour:
   bulletDelay: 2
   deathParticle: {fileID: 5286558725423210719}
   directionType: 1
+  rigid: {fileID: 582091375808334919}
 --- !u!50 &582091375808334919
 Rigidbody2D:
   serializedVersion: 4
