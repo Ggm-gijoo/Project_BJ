@@ -15,6 +15,6 @@ public class EndPoint : MonoBehaviour
 	}
 	public void MoveEndScene()
 	{
-		SceneManager.LoadScene("EndScene");
+		SceneManager.LoadScene("MapDesign(End)");
 	}
 }
