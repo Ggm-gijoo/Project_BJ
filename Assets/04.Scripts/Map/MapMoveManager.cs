@@ -104,6 +104,7 @@ namespace Map
 		}
 		private IEnumerator LoadingScene(MoveType moveType)
 		{
+			Sound.SoundManager.Instance.PlayEFF("minimize_004");
 			FadeOutScene();
 			yield return new WaitForSeconds(1f);
 			if (!string.IsNullOrEmpty(allMapDataSO.mapDataDic[praviousePos].sceneName))

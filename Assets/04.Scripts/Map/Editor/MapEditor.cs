@@ -147,9 +147,22 @@ namespace Map
 
 						if (guids.Length > 0)
 						{
-							string scenePath = AssetDatabase.GUIDToAssetPath(guids[0]);
-
-							Debug.Log("Open Scene: " + scenePath + " Scene Name: " + so.sceneName);
+							string path = "";
+							string scenePath = "";
+							for(int i = 0; i < guids.Length; ++i)
+							{
+								path = AssetDatabase.GUIDToAssetPath(guids[i]);
+								if (path.Contains(so.sceneName))
+								{
+									scenePath = path;
+								}
+							}
+							if(scenePath == "")
+							{
+								Debug.LogWarning("Scene not found: " + so.sceneName);
+								Debug.LogWarning("Scene not found: " + guids[0]);
+								return;
+							}
 							// Open the scene in the Unity Editor
 							EditorSceneManager.OpenScene(scenePath);
 						}
