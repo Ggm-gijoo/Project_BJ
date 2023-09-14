@@ -13,9 +13,14 @@ MonoBehaviour:
   m_Name: EFFSO
   m_EditorClassIdentifier: 
   _effaudioClips:
+  - {fileID: 8300000, guid: f43073e313f0fad41b77f4552cc26ba4, type: 3}
+  - {fileID: 8300000, guid: 7598f1684c5282749947984a53693e84, type: 3}
+  - {fileID: 8300000, guid: f422dfa2141e4214f97e5ee1ada1d627, type: 3}
   - {fileID: 8300000, guid: c95a20c7faa24c14b9552c9e892d5007, type: 3}
   - {fileID: 8300000, guid: 403f4918224d82d4dbcd8244fa85e6a6, type: 3}
-  - {fileID: 8300000, guid: f422dfa2141e4214f97e5ee1ada1d627, type: 3}
-  - {fileID: 8300000, guid: 7598f1684c5282749947984a53693e84, type: 3}
-  - {fileID: 8300000, guid: 3698742568c80fe43a1707bc51a0eb67, type: 3}
+  - {fileID: 8300000, guid: 546514bb141c7b145b6a62cd87791686, type: 3}
+  - {fileID: 8300000, guid: 0057698e9b7e7a448a0d84d6fd9910f4, type: 3}
   - {fileID: 8300000, guid: c436fe117d8bc824eb44021ca7fa7b87, type: 3}
+  - {fileID: 8300000, guid: 3698742568c80fe43a1707bc51a0eb67, type: 3}
+  - {fileID: 8300000, guid: a1ea154601cbf4f4a8fd292ac66d6894, type: 3}
+  - {fileID: 8300000, guid: 723612f7a14ce844d8f9b79efb95d514, type: 3}

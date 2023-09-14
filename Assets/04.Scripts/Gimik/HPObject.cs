@@ -28,6 +28,7 @@ public class HPObject : MonoBehaviour, IHitFromBullet
 
 	protected IEnumerator HitEffect()
 	{
+		Sound.SoundManager.Instance.PlayEFF("GroundHit");
 		model.transform.DOShakePosition(0.2f, 0.3f, 20).OnComplete(() =>
 		{
 			model.transform.localPosition = Vector3.zero;
