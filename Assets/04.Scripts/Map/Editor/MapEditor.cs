@@ -149,6 +149,7 @@ namespace Map
 						{
 							string scenePath = AssetDatabase.GUIDToAssetPath(guids[0]);
 
+							Debug.Log("Open Scene: " + scenePath + " Scene Name: " + so.sceneName);
 							// Open the scene in the Unity Editor
 							EditorSceneManager.OpenScene(scenePath);
 						}
