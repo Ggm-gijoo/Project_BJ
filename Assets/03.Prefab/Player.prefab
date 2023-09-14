@@ -363,8 +363,8 @@ MonoBehaviour:
   bullet: Bullet
   chargedBullet: ChargeBullet
   speed: 10
-  jumpPower: 6.5
-  fallMultiplier: 2.5
+  jumpPower: 6
+  fallMultiplier: 500
   eye: {fileID: 760005748046485783}
   chargedBody: {fileID: 6517815464984803405}
   groundLayerMask:
