@@ -3195,6 +3195,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MarkerItem
       objectReference: {fileID: 0}
+    - target: {fileID: 5760431288635838330, guid: 98811d77c6da21b4d9eb7143ad635a50, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
