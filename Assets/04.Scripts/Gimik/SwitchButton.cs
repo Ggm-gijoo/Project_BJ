@@ -93,11 +93,12 @@ public class SwitchButton : MonoBehaviour
 		}
 	}
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-		if (collision.transform.CompareTag("Player"))
+	private void OnCollisionEnter2D(Collision2D collision)
+	{
+		if (collision.gameObject.CompareTag("Marker"))
+		{
 			Hit();
-    }
-
+		}
+	}
 
 }

@@ -81,6 +81,7 @@ public class Bullet : MonoBehaviour, IProjectile
 		}
 		else if ((colLayerMask.value & (1 << collision.transform.gameObject.layer)) > 0)
 		{
+			Sound.SoundManager.Instance.PlayEFF("HitWall");
 			PoolThisObject();
 		}
 	}

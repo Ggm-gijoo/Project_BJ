@@ -133,6 +133,7 @@ public class PlayerController : MonoBehaviour, IGravity
             isCanJump = false;
             rigid.velocity = new Vector2(rigid.velocity.x, 0);
             rigid.AddForce(-GravityDir.normalized * jumpPower, ForceMode2D.Impulse);
+            Sound.SoundManager.Instance.PlayEFF("Jump");
         }
     }
 
@@ -195,6 +196,10 @@ public class PlayerController : MonoBehaviour, IGravity
         var hit = Physics2D.BoxCast(transform.position + (Vector3.down * 0.05f), new Vector2(0.5f,1f), 0, Vector2.down, 0.1f, groundLayerMask);
         if (hit.collider != null)
         {
+            if(!isCanJump)
+			{
+                Sound.SoundManager.Instance.PlayEFF("Land");
+			}
             isCanJump = true;
         }
     }

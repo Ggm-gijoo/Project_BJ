@@ -148,6 +148,7 @@ GameObject:
   - component: {fileID: 495241027552985911}
   - component: {fileID: 942796093488727024}
   - component: {fileID: 5788068275157075252}
+  - component: {fileID: 18504775106712189}
   m_Layer: 12
   m_Name: GravityMarker
   m_TagString: Marker
@@ -250,6 +251,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &18504775106712189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3599200129532963701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddc9da9b27af0cb47ab929fe31056d84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4223215661032049935
 GameObject:
   m_ObjectHideFlags: 0
@@ -263,7 +276,7 @@ GameObject:
   - component: {fileID: 6456188441883748268}
   m_Layer: 12
   m_Name: Col
-  m_TagString: Untagged
+  m_TagString: Marker
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
